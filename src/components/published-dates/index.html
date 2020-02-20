@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Published dates component – GOV.UK Prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/toggle.js"></script>
+<script type="text/javascript">
+  var $element2 = $('#published-dates-toggle-2');
+  var toggle = new GOVUK.Modules.Toggle();
+  toggle.start($element2);
+
+  var $element3 = $('#published-dates-toggle-3b');
+  var toggle = new GOVUK.Modules.Toggle();
+  toggle.start($element3);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype",
+    classes: "app-tag--prototype"
+  },
+  html: 'This is a prototype – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Published dates
+      </h1>
+
+      <p class="govuk-body-l">Displays dates to reflect when content was published and updated.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="http://government-frontend.herokuapp.com/component-guide/published-dates">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Displayed above the content</p>
+
+      {{ appPublishedDates({
+        published: {
+          timestamp: '1990-01-01T15:42:37.000+00:00'
+        },
+        lastUpdated: {
+          timestamp: '2016-10-20T12:15:42.000+00:00'
+        }
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">Displayed below the content</p>
+
+      {{ appPublishedDates({
+        attributes: {
+          id: 'published-dates-toggle-2',
+          'data-module': 'toggle',
+          lang: 'en'
+        },
+        published: {
+          text: 'Published',
+          timestamp: '1990-01-01T15:42:37.000+00:00'
+        },
+        lastUpdated: {
+          text: 'Last updated',
+          timestamp: '2016-10-20T12:15:42.000+00:00'
+        },
+        history: [{
+          timestamp: '1990-01-01T15:42:37.000+00:00',
+          text: 'First published'
+        }, {
+          timestamp: '1995-07-20T15:42:37.000+0000',
+          text: 'Updated to include information for 1994'
+        }, {
+          timestamp: '2000-10-14T15:42:37.000+0000',
+          text: 'Updated information on pupil premium reviews and what information schools need to publish on their websites.'
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 3</h3>
+
+      <p class="govuk-body">Above and below content</p>
+
+      <!-- TODO: replace this with call appPublishedDates({})? -->
+
+      {{ appPublishedDates({
+        attributes: {
+          id: 'published-dates-toggle-3a',
+          'data-module': 'toggle',
+          lang: 'en'
+        },
+        published: {
+          text: 'Published',
+          timestamp: '1990-01-01T15:42:37.000+00:00'
+        },
+        lastUpdated: {
+          text: 'Last updated',
+          timestamp: '2016-10-20T12:15:42.000+00:00'
+        },
+        linkToHistory: {
+          href: '#published-dates-toggle-3b',
+          text: 'see all updates'
+        }
+      }) }}
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      {{ appPublishedDates({
+        attributes: {
+          id: 'published-dates-toggle-3b',
+          'data-module': 'toggle',
+          lang: 'en'
+        },
+        published: {
+          text: 'Published',
+          timestamp: '1990-01-01T15:42:37.000+00:00'
+        },
+        lastUpdated: {
+          text: 'Last updated',
+          timestamp: '2016-10-20T12:15:42.000+00:00'
+        },
+        history: [{
+          timestamp: '1990-01-01T15:42:37.000+00:00',
+          text: 'First published'
+        }, {
+          timestamp: '1995-07-20T15:42:37.000+0000',
+          text: 'Updated to include information for 1994'
+        }, {
+          timestamp: '2000-10-14T15:42:37.000+0000',
+          text: 'Updated information on pupil premium reviews and what information schools need to publish on their websites.'
+        }]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+.js-enabled {
+
+  .js-hidden, [aria-hidden="true"] {
+    display: none;
+  }
+
+  .js-sectors {
+    border-top: 1px solid govuk-colour("mid-grey");
+    margin-top: govuk-spacing(6);
+    padding-top: govuk-spacing(6);
+  }
+
+}
+
+
+.govuk-choose-sector {
+  display: none;
+
+  .js-enabled & {
+    display: block;
+   }
+
+}
+
+
+.govuk-facets {
+  display: none;
+
+  &--is-visible {
+    display: block;
+  }
+
+}
+
+
+.govuk-facets__button {
+
+  > * {
+    pointer-events: none;
+  }
+
+}

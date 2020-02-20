@@ -1,0 +1,92 @@
+/* ==========================================================================
+   #CONTENTS LIST
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_contents-list.scss
+   ========================================================================== */
+
+   .app-contents-list {
+    // Always render the contents list above a
+    // back to contents link
+    position: relative;
+    margin: 0 0 ($govuk-gutter / 3 * 2) 0;
+    z-index: 1;
+    background: govuk-colour("white");
+    box-shadow: 0 20px 15px -10px govuk-colour("white");
+  }
+
+  .app-contents-list__title {
+    @include govuk-text-colour;
+    @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
+    margin: 0;
+  }
+
+  .app-contents-list__list,
+  .app-contents-list__nested-list {
+    @include govuk-text-colour;
+    @include govuk-font($size: 16);
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  .app-contents-list__link:visited {
+    text-decoration: none !important
+  }
+
+  .app-contents-list--no-underline {
+    .app-contents-list__link {
+      text-decoration: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .app-contents-list__link {
+    .app-contents-list__list-item--parent > & {
+      font-weight: bold;
+    }
+  }
+
+  .app-contents-list__list-item {
+    padding-top: $govuk-gutter / 3;
+    line-height: 1.3;
+    list-style-type: none;
+
+    @include govuk-media-query($from: tablet) {
+      padding-top: $govuk-gutter / 4;
+    }
+  }
+
+  .app-contents-list__list-item--dashed {
+    $contents-spacing: ($govuk-gutter / 2) + 10;
+    margin-left: $contents-spacing;
+    padding-right: $contents-spacing;
+
+    &:before {
+      content: "— ";
+      margin-left: -$contents-spacing;
+      padding-right: 5px;
+
+      .direction-rtl & {
+        margin-left: 0;
+        margin-right: -$contents-spacing;
+        padding-right: 0;
+        padding-left: 5px;
+      }
+    }
+
+    // Focus styles on IE8 and older include the
+    // left margin, creating an odd white box with
+    // orange border around the em dash.
+    // Use inline-block and vertical alignment to
+    // fix focus styles
+    //
+    // https://github.com/alphagov/government-frontend/pull/420#issuecomment-320632386
+    .lte-ie8 & .app-contents-list__link {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }

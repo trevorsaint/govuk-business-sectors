@@ -1,0 +1,28 @@
+{% from "../back-to-top/macro.njk" import appBackToTop %}
+{% from "../contents-list/macro.njk" import appContentsList %}
+
+<div id="{{ params.id | default('contents') }}" class="app-contents-list-with-body" data-module="sticky-element-container">
+
+  <div class="responsive-bottom-margin">
+    {{ appContentsList({
+      heading: params.heading,
+      items: params.items,
+      classes: params.classes,
+      attributes: params.attributes
+    }) }}
+
+    {{- caller() if caller -}}
+
+  </div>
+
+  <div data-sticky-element class="app-contents-list-with-body__link-wrapper">
+    <div class="app-contents-list-with-body__link-container">
+      {{ appBackToTop({
+        text: params.backToTop.text if params.backToTop.text else params.heading.text,
+        html: params.backToTop.html if params.backToTop.html else params.backToTop.text,
+        href: '#' + params.id if params.id else '#contents'
+      }) }}
+    </div>
+  </div>
+
+</div>

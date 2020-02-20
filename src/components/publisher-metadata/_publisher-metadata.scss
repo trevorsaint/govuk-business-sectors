@@ -1,0 +1,137 @@
+/* ==========================================================================
+   #PUBLISHER METADATA
+   Based on https://github.com/alphagov/government-frontend/blob/master/app/assets/stylesheets/components/_publisher-metadata.scss
+   ========================================================================== */
+
+   .app-c-publisher-metadata {
+    @include responsive-bottom-margin;
+    @include govuk-font(16);
+    padding-top: govuk-spacing(3);
+  }
+
+  .app-c-publisher-metadata__other a {
+    font-weight: bold;
+  }
+
+  .app-c-publisher-metadata__term {
+    float: left;
+    padding-right: govuk-spacing(1);
+
+    .direction-rtl & {
+      float: none;
+      display: inline-block;
+      padding-right: 0;
+      padding-left: govuk-spacing(1);
+    }
+  }
+
+  .app-c-publisher-metadata__definition {
+    .direction-rtl & {
+      float: none;
+      display: inline-block;
+    }
+  }
+
+  .app-c-publisher-metadata__toggle,
+  .app-c-publisher-metadata__definition-others {
+    display: none;
+
+    .js-enabled & {
+      display: inline-block;
+    }
+  }
+
+
+
+  // .app-c-publisher-metadata {
+  //   @include govuk-text-colour;
+  //   @include govuk-font(16);
+  //   @include responsive-bottom-margin;
+  //   @include govuk-clearfix;
+  //
+  //   a {
+  //     @include govuk-link-common;
+  //     @include govuk-link-style-default;
+  //   }
+  // }
+  //
+  // .app-c-publisher-metadata.direction-rtl {
+  //   direction: rtl;
+  //   text-align: start;
+  // }
+  //
+  // .app-c-publisher-metadata--inverse {
+  //   color: govuk-colour("white");
+  //   background-color: govuk-colour("blue");
+  //
+  //   a:link,
+  //   a:active,
+  //   a:visited {
+  //     color: govuk-colour("white");
+  //   }
+  //
+  //   a:focus {
+  //     color: govuk-colour("black");
+  //   }
+  // }
+  //
+  // .app-c-publisher-metadata__term {
+  //   margin-top: .5em;
+  //   line-height: 1.4;
+  //
+  //   @include govuk-media-query($from: tablet) {
+  //     box-sizing: border-box;
+  //     float: left;
+  //     clear: left;
+  //     width: 30%;
+  //     max-width: 11em;
+  //     padding-right: govuk-spacing(2);
+  //     margin-top: 0;
+  //   }
+  // }
+  //
+  // .app-c-publisher-metadata.direction-rtl .app-c-publisher-metadata__term {
+  //   float: right;
+  //   clear: right;
+  //
+  //   @include govuk-media-query($from: tablet) {
+  //     padding-left: govuk-spacing(2);
+  //     padding-right: 0;
+  //   }
+  // }
+  //
+  // .app-c-publisher-metadata__definition {
+  //   margin: 0;
+  //   line-height: 1.4;
+  //
+  //   @include govuk-media-query($from: tablet) {
+  //     float: left;
+  //     width: 70%;
+  //   }
+  // }
+  //
+  // .app-c-publisher-metadata__definition-link {
+  //   text-decoration: none;
+  // }
+  //
+  // .app-c-publisher-metadata__definition-link:focus,
+  // .app-c-publisher-metadata__definition-link:active,
+  // .app-c-publisher-metadata__definition-link:hover {
+  //   text-decoration: underline;
+  // }
+  //
+  // .app-c-publisher-metadata.direction-rtl .app-c-publisher-metadata__definition {
+  //   float: right;
+  // }
+  //
+  // .app-c-publisher-metadata__toggle-wrap {
+  //   display: none;
+  // }
+  //
+  // .js-enabled .app-c-publisher-metadata__toggle-wrap {
+  //   display: block;
+  // }
+  //
+  // .js-enabled .app-c-publisher-metadata__toggle-items.js-hidden {
+  //   display: none;
+  // }

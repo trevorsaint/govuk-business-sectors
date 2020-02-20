@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Cookie banner component – GOV.UK Prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/lib/cookie-functions.js"></script>
+<script src="/public/javascripts/cookie-banner.js"></script>
+<script type="text/javascript">
+  var $element = $('#global-cookie-message');
+  var cookieBanner = new GOVUK.Modules.CookieBanner();
+  cookieBanner.start($element);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype",
+    classes: "app-tag--prototype"
+  },
+  html: 'This is a prototype – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Cookie banner
+      </h1>
+
+      <p class="govuk-body-l">Help users manage their personal data by telling them when you store cookies on their device.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://components.publishing.service.gov.uk/component-guide/cookie_banner">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      {{ appCookieBanner({
+        attributes: {
+          'data-module': 'cookie-banner',
+          'aria-label': 'Cookie banner'
+        },
+        buttons: {
+          accept: {
+            text: 'Accept cookies'
+          },
+          settings: {
+            text: 'Cookie settings'
+          }
+        }
+      }) }}
+
+<!-- ,
+buttons: [{
+  label: {
+    text: 'Accept cookies'
+  }
+},{
+  label: {
+    text: 'Cookie settings'
+  }
+}] -->
+
+    </div>
+</div>
+
+{% endblock %}

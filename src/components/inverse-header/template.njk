@@ -1,0 +1,3 @@
+<header class="app-inverse-header {{- ' app-inverse-header--full-width' if params.fullWidth }} {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {{- caller() if caller -}}
+</header>

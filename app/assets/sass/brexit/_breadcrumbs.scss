@@ -1,0 +1,28 @@
+.govuk-breadcrumbs--ondark {
+  margin-bottom: govuk-spacing(6);
+  margin-top: 0;
+}
+
+.govuk-breadcrumbs--ondark .govuk-breadcrumbs__list-item {
+  color: govuk-colour("white");
+}
+
+
+.govuk-breadcrumbs__list-item:before {
+  border-color: govuk-colour("white");
+}
+
+
+.govuk-breadcrumbs--ondark .govuk-breadcrumbs__link {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: govuk-colour("white");
+  }
+
+  &:focus {
+    color: govuk-colour("black");
+  }
+
+}

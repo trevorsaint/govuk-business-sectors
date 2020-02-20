@@ -1,0 +1,325 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Metadata component – GOV.UK Prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/toggle.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#metadata-toggle');
+  var toggle = new GOVUK.Modules.Toggle();
+  toggle.start($element1);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype",
+    classes: "app-tag--prototype"
+  },
+  html: 'This is a prototype – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Metadata
+      </h1>
+
+      <p class="govuk-body-l">Used to display relevant metadata about organisations and tags for a document.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://components.publishing.service.gov.uk/component-guide/metadata">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <!-- TODO: change to term and definition -->
+
+      {{ appMetadata({
+        sections: [{
+          heading: {
+            text: 'From:'
+          },
+          items: [{
+            heading: {
+              text: 'Ministry of Defence'
+            },
+            href: '#'
+          }]
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      {{ appMetadata({
+        sections: [{
+          heading: {
+            text: 'History:'
+          },
+          items: [{
+            heading: {
+              text: 'Updated 2 weeks ago'
+            }
+          }]
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 3</h3>
+
+      {{ appMetadata({
+        sections: [{
+          heading: {
+            text: 'Published:'
+          },
+          items: [{
+            heading: {
+              text: '14 June 2019'
+            }
+          }]
+        },{
+          heading: {
+            text: 'Last updated:'
+          },
+          items: [{
+            heading: {
+              text: '10 September 2019'
+            }
+          }]
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 4</h3>
+
+      {{ appMetadata({
+        attributes: {
+          id: 'metadata-toggle'
+        },
+        sections: [{
+          heading: {
+            text: 'From:'
+          },
+          limit: {
+            count: 5,
+            'data-expanded': 'false',
+            'data-controls': 'toggle_from',
+            'data-toggled-text': 'Show fewer',
+            'aria-controls': 'toggle_from',
+            'aria-expanded': 'false'
+          },
+          items: [{
+            heading: {
+              text: 'Ministry of Defence'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Cabinet Office'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Department for Business, Energy & Industrial Strategy'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Foreign & Commonwealth Office'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Ministry of Justice'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Department for Environment, Food & Rural Affairs'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Department for Work and Pensions'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'HM Revenue & Customs'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Home Office'
+            },
+            href: '#'
+          }]
+        },{
+          heading: {
+            text: 'Part of:'
+          },
+          items: [{
+            heading: {
+              text: 'Energy'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Environment'
+            },
+            href: '#'
+          }]
+        },{
+          heading: {
+            text: 'History:'
+          },
+          items: [{
+            heading: {
+              text: 'Updated 2 weeks ago'
+            }
+          }]
+        },{
+          heading: {
+            text: 'Related topics:'
+          },
+          items: [{
+            heading: {
+              text: 'Arts and culture'
+            },
+            href: '#'
+          },{
+            heading: {
+              text: 'Sports and leisure'
+            },
+            href: '#'
+          }]
+        },{
+          heading: {
+            text: 'Applies to:'
+          },
+          items: [{
+            heading: {
+              text: 'England'
+            }
+          }]
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 5</h3>
+
+      {{ appMetadata({
+        direction: 'rtl',
+        sections: [{
+          heading: {
+            text: 'From:'
+          },
+          items: [{
+            heading: {
+              text: 'Cabinet Office'
+            },
+            href: '#'
+          }]
+        },{
+          heading: {
+            text: 'Part of:'
+          },
+          items: [{
+            heading: {
+              text: 'Environment'
+            },
+            href: '#'
+          }]
+        },{
+          heading: {
+            text: 'History:'
+          },
+          items: [{
+            heading: {
+              text: '10 September 2019'
+            }
+          }]
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 6</h3>
+
+      {{ appMetadata({
+        sections: [{
+          heading: {
+            text: 'From:'
+          },
+          items: [{
+            heading: {
+              text: 'Cabinet Office'
+            },
+            href: '#'
+          }]
+        },{
+          heading: {
+            text: 'Published:'
+          },
+          items: [{
+            heading: {
+              text: '14 June 2019'
+            }
+          }]
+        },{
+          heading: {
+            text: 'Applies to:'
+          },
+          items: [{
+            heading: {
+              html: 'England, Scotland, and Wales (see detailed guidance for <a href="#" rel="external">Northern Ireland</a>)'
+            }
+          }]
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 7</h3>
+
+      {{ appMetadata({
+        inverse: true,
+        sections: [{
+          heading: {
+            text: 'From:'
+          },
+          items: [{
+            heading: {
+              text: 'Cabinet Office'
+            },
+            href: '#'
+          }]
+        },{
+          heading: {
+            text: 'Published:'
+          },
+          items: [{
+            heading: {
+              text: '14 June 2019'
+            }
+          }]
+        },{
+          heading: {
+            text: 'Applies to:'
+          },
+          items: [{
+            heading: {
+              html: 'England, Scotland, and Wales (see detailed guidance for <a href="#" rel="external">Northern Ireland</a>)'
+            }
+          }]
+        }]
+      }) }}
+
+    </div>
+</div>
+
+{% endblock %}

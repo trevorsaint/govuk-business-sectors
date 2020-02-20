@@ -1,0 +1,25 @@
+.govuk-spotlight-list {
+  @include list-reset();
+  @include govuk-font(19, $weight: bold);
+  margin-bottom: govuk-spacing(4);
+}
+
+.govuk-spotlight-list__item {
+  border-top: 1px solid $govuk-border-colour;
+  padding-bottom: govuk-spacing(5);
+  padding-top: govuk-spacing(5);
+  position: relative;
+}
+
+
+.govuk-spotlight-list__item:last-child {
+  border-bottom: 1px solid $govuk-border-colour;
+}
+
+
+// Trick to make full area clickable
+.govuk-spotlight-list__link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0; top: 0;
+}

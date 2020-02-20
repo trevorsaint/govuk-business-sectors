@@ -1,0 +1,25 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Prototype</h1>
+
+    {{ govukButton({
+      classes: "govuk-!-margin-bottom-0",
+      text: "Start now",
+      href: "/business-sector",
+      isStartButton: true
+    }) }}
+
+  </div>
+
+</div>
+{% endblock %}

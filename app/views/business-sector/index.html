@@ -1,0 +1,216 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">What does your business or organisation do?</h1>
+
+    <div class="govuk-choose-sector">
+
+      <!-- Facets -->
+      <div class="govuk-facets" id="facets" aria-live="assertive">
+
+        <div class="govuk-facets__container">
+          <h2 class="govuk-facets__heading">Chosen sectors</h2>
+          <div class="govuk-facets__group"></div>
+        </div>
+
+      </div>
+      <!-- End facets -->
+
+      {{ govukInput({
+        formGroup: {
+          classes: "govuk-!-margin-bottom-3"
+        },
+        label: {
+          text: "Sector your business work in. For example, ‘plumbing’."
+        },
+        hint: {
+          text: "Select all that apply."
+        },
+        id: "business-sectors",
+        name: "business-sectors"
+      }) }}
+
+      <p>Or if you prefer, you can <a class="govuk-link govuk-link--no-visited-state js-toggle" href="#" aria-controls="sectors">show all business sectors</a></p>
+
+    </div>
+
+    <div class="js-sectors js-hidden" id="sectors">
+
+      <!--hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"-->
+
+      <!-- Agriculture Forestry and Fishing -->
+      {{ govukCheckboxes({
+        idPrefix: "agriculture",
+        name: "agriculture",
+        classes: "js-checkbox govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Agriculture Forestry and Fishing",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "1",
+            text: "Growing of cereals (except rice), leguminous crops and oil seeds"
+          },
+          {
+            value: "2",
+            text: "Growing of rice"
+          },
+          {
+            value: "3",
+            text: "Growing of vegetables and melons, roots and tubers"
+          },
+          {
+            value: "4",
+            text: "Growing of sugar cane"
+          }
+        ]
+      }) }}
+
+      <!-- Mining and Quarrying -->
+      {{ govukCheckboxes({
+        idPrefix: "mining",
+        name: "mining",
+        classes: "js-checkbox govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Mining and Quarrying",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Deep coal mines"
+          },
+          {
+            value: "",
+            text: "Open cast coal working"
+          },
+          {
+            value: "",
+            text: "Mining of lignite"
+          },
+          {
+            value: "",
+            text: "Extraction of crude petroleum"
+          }
+        ]
+      }) }}
+
+      <!-- Manufacturing -->
+      {{ govukCheckboxes({
+        idPrefix: "manufacturing",
+        name: "manufacturing",
+        classes: "js-checkbox govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Manufacturing",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Processing and preserving of meat"
+          },
+          {
+            value: "",
+            text: "Processing and preserving of poultry meat"
+          },
+          {
+            value: "",
+            text: "Production of meat and poultry meat products"
+          },
+          {
+            value: "",
+            text: "Processing and preserving of fish, crustaceans and molluscs"
+          }
+        ]
+      }) }}
+
+      <!-- Electricity, gas, steam and air conditioning supply -->
+      {{ govukCheckboxes({
+        idPrefix: "electricity",
+        name: "electricity",
+        classes: "js-checkbox govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Electricity, gas, steam and air conditioning supply",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Production of electricity"
+          },
+          {
+            value: "",
+            text: "Transmission of electricity"
+          },
+          {
+            value: "",
+            text: "Distribution of electricity"
+          },
+          {
+            value: "",
+            text: "Trade of electricity"
+          }
+        ]
+      }) }}
+
+    </div>
+
+    {{ govukButton({
+      classes: "govuk-!-margin-bottom-0",
+      text: "Continue"
+    }) }}
+
+  </div>
+
+</div>
+{% endblock %}
+
+
+{% block pageScripts %}
+<script src="/public/javascripts/business-sectors.js"></script>
+
+<script>
+
+  // Toggle
+  var toggle = document.querySelectorAll('.js-toggle');
+  toggle.forEach(function(toggle) {
+    new Toggle({container: toggle});
+  });
+
+  // Sectors
+  var sectors = document.querySelectorAll('.js-sectors');
+  sectors.forEach(function(sector) {
+    new Sectors({container: sector});
+  });
+
+</script>
+
+{% endblock %}

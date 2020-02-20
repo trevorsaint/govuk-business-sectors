@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Print link component – GOV.UK Prototype
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype",
+    classes: "app-tag--prototype"
+  },
+  html: 'This is a prototype – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Print link
+      </h1>
+
+      <p class="govuk-body-l">Displays a link with a print icon.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://government-frontend.herokuapp.com/component-guide/print-link">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Default</p>
+
+      {{ appPrintLink({
+        href: '#'
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">With custom text</p>
+
+      {{ appPrintLink({
+        href: '#',
+        text: 'Print this page',
+        attributes: {
+          rel: 'alternate'
+        }
+      }) }}
+
+    </div>
+</div>
+
+{% endblock %}

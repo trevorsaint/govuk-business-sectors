@@ -1,0 +1,54 @@
+<div class="app-image-card {{- ' app-image-card--large' if params.large }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <figure class="app-image-card__image-wrapper">
+    <img class="app-image-card__image {{- ' ' + params.image.classes if params.image.classes }}" alt="{{ params.image.alt }}" src="{{ params.image.src }}"{% for attribute, value in params.image.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  </figure>
+  <div class="app-image-card__text-wrapper">
+    {%- if params.metadata %}
+      <p class="app-image-card__context">
+        {%- if params.metadata.public_updated_at %}
+          <time datetime="2016-06-27T10:29:44+00:00">
+            {{- params.metadata.public_updated_at | date('D MMMM YYYY') -}}
+          </time>
+        {% endif -%}
+        {%- if params.metadata.document_type %}
+        <span aria-hidden="true"> — </span>{{ params.metadata.document_type -}}
+        {% endif -%}
+      </p>
+    {% endif -%}
+    {%- if params.href %}
+      {%- if params.title.headingLevel %}
+        <h{{ params.title.headingLevel | default(2) }} class="app-image-card__title {{- ' ' + params.title.classes if params.title.classes }}"{% for attribute, value in params.title.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+          <a class="app-image-card__title-link " href="{{ params.href }}">
+            {{- params.title.html | safe if params.title.html else params.title.text -}}
+          </a>
+        </h{{ params.title.headingLevel | default(2) }}>
+      {% else %}
+        <span class="app-image-card__title {{- ' ' + params.title.classes if params.title.classes }}">
+          <a class="app-image-card__title-link" href="{{ params.href }}">
+            {{- params.title.html | safe if params.title.html else params.title.text -}}
+          </a>
+        </span>
+      {% endif -%}
+    {% else %}
+      <h{{ params.title.headingLevel | default(2) }} class="app-image-card__title {{- ' ' + params.title.classes if params.title.classes }}"{% for attribute, value in params.title.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+        {{- params.title.html | safe if params.title.html else params.title.text -}}
+      </h{{ params.title.headingLevel | default(2) }}>
+    {% endif -%}
+    {%- if params.description %}
+      <div class="app-image-card__description {{- ' ' + params.description.classes if params.description.classes }}"{% for attribute, value in params.description.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+        {{- params.description.html | safe if params.description.html else params.description.text -}}
+      </div>
+    {% endif -%}
+    {%- if params.links %}
+      <ul class="app-image-card__list {{- ' app-image-card__list--indented' if not params.extraLinksNoIndent }}">
+        {% for item in params.links %}
+          <li class="app-image-card__list-item {{- ' ' + item.classes if item.classes }}"{% for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+            <a class="app-image-card__list-item-link " href="{{ item.href }}">
+              {{- item.html | safe if item.html else item.text -}}
+            </a>
+          </li>
+        {% endfor -%}
+      </ul>
+    {% endif -%}
+  </div>
+</div>

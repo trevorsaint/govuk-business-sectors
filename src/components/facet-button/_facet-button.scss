@@ -1,0 +1,166 @@
+.govuk-facets {
+  margin-bottom: govuk-spacing(7);
+}
+
+
+.govuk-facets__container {
+  background-color: govuk-colour("light-grey");
+  padding: govuk-spacing(4);
+}
+
+
+.govuk-facets__heading {
+  @include govuk-font(24, $weight: bold);
+  margin: 0;
+}
+
+
+.govuk-facets__group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.govuk-facets__button {
+  @include govuk-font(16);
+  background-color: govuk-colour("white");
+  border: 1px solid govuk-colour("mid-grey");
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin-right: govuk-spacing(2);
+  margin-top: govuk-spacing(2);
+
+  // Remove border to maintain vertical rhythm
+  padding-top: govuk-spacing(2) - 1px;
+  padding-right: govuk-spacing(2) - 1px;
+  padding-bottom: govuk-spacing(2) - 1px;
+  padding-left: govuk-spacing(3) - 1px;
+
+  &:focus {
+    border-color: govuk-colour("black");
+    box-shadow: inset 0 0 0 2px govuk-colour("black"), 0 0 0 3px govuk-colour("yellow");
+    outline: none;
+  }
+
+}
+
+.govuk-facets__button-icon {
+  color: currentColor;
+  display: block;
+  margin-left: govuk-spacing(2);
+  height: 20px;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+
+
+
+
+
+  .app-facet-tags {
+    padding-bottom: govuk-spacing(1);
+  }
+
+  .app-facet-tags__group {
+    padding: govuk-spacing(1);
+
+    &:nth-child(odd) {
+      background-color: govuk-colour("light-grey", $legacy: "grey-4");
+    }
+  }
+
+  .app-facet-tags__wrapper {
+    vertical-align: middle;
+    margin: 5px 0;
+
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+    }
+  }
+
+  .app-facet-tags__wrapper:first-of-type .app-facet-tags__preposition:first-of-type {
+    font-weight: bold;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .app-facet-tags__preposition {
+    @include govuk-font(16);
+    padding: 0px 5px 5px 2px;
+    margin: 0;
+    vertical-align: middle;
+    text-transform: lowercase;
+
+    @include govuk-media-query($from: tablet) {
+      display: table-cell;
+      padding: 0 5px 0 2px;
+    }
+  }
+
+  .app-facet-tag {
+    display: block;
+    position: relative;
+    padding: 5px;
+    border: 1px solid govuk-colour("dark-grey", $legacy: "grey-1");
+    border-radius: 5px;
+    background-color: govuk-colour("light-grey", $legacy: "grey-4");
+
+    .js-enabled & {
+      padding: 8px 7px 7px 23px;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      display: table-cell;
+    }
+  }
+
+  .app-facet-tag__text {
+    @include govuk-font(16);
+    display: inline-block;
+    margin-left: 0;
+    margin-bottom: 0;
+
+    .js-enabled & {
+      margin-left: 5px;
+    }
+  }
+
+  .app-facet-tag__remove {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    // border-radius: 5px;
+    font-weight: bold;
+    @include govuk-font(16, $weight: bold);
+    text-align: left;
+    cursor: pointer;
+    color: govuk-colour('black');
+    text-decoration: none;
+    background: none;
+    border: 0;
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: 0;
+    }
+
+    .js-enabled & {
+      display: inline-block;
+      border: 1px solid transparent;
+      &:focus {
+        -webkit-box-shadow: inset 0 0 0 2px;
+        box-shadow: inset 0 0 0 2px;
+        border: solid 1px govuk-colour("black");
+      }
+    }
+  }

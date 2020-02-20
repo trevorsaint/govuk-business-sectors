@@ -1,0 +1,27 @@
+.govuk-main-wrapper--email,
+.govuk-header__container--email,
+.govuk-footer__container--email {
+  max-width: 600px;
+  margin: auto;
+}
+
+
+.govuk-header__container--email {
+  margin-bottom: -10px;
+}
+
+
+.govuk-template--email {
+  background-color: govuk-colour("white");
+}
+
+
+.govuk-inset-text--contact {
+  border-left: 1px solid $govuk-border-colour;
+}
+
+
+abbr {
+  cursor: help;
+  text-decoration: none;
+}

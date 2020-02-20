@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Publisher metadata component – GOV.UK Prototype
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype",
+    classes: "app-tag--prototype"
+  },
+  html: 'This is a prototype – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Publisher metadata
+      </h1>
+
+      <p class="govuk-body-l">Used to display a list of publication dates and publishers.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://government-frontend.herokuapp.com/component-guide/publisher-metadata">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      {{ appPublisherMetadata({
+        published: {
+          text: 'Published',
+          timestamp: '1990-01-01T15:42:37.000+00:00'
+        },
+        lastUpdated: {
+          text: 'Last updated',
+          timestamp: '2016-10-20T12:15:42.000+00:00'
+        }
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      {{ appPublisherMetadata({
+        published: {
+          text: 'Published',
+          timestamp: '1990-01-01T15:42:37.000+00:00'
+        },
+        lastUpdated: {
+          text: 'Last updated',
+          timestamp: '2016-10-20T12:15:42.000+00:00'
+        },
+        sections: [{
+          heading: {
+            text: 'From'
+          },
+          items: [{
+            heading: {
+              text: 'Ministry of Defence'
+            },
+            href: '#'
+          }, {
+            heading: {
+              text: 'Ministry of Justcice'
+            },
+            href: '#'
+          }, {
+            heading: {
+              text: 'Cabinet Office'
+            },
+            href: '#'
+          }]
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 3</h3>
+
+      {{ appPublisherMetadata({
+        published: {
+          text: 'Published',
+          timestamp: '1990-01-01T15:42:37.000+00:00'
+        },
+        lastUpdated: {
+          text: 'Last updated',
+          timestamp: '2016-10-20T12:15:42.000+00:00'
+        },
+        linkToHistory: {
+          href: '#',
+          text: 'see all updates'
+        },
+        sections: [{
+          heading: {
+            text: 'From'
+          },
+          items: [{
+            heading: {
+              text: 'Ministry of Defence'
+            },
+            href: '#'
+          }, {
+            heading: {
+              text: 'Ministry of Justcice'
+            },
+            href: '#'
+          }, {
+            heading: {
+              text: 'Cabinet Office'
+            },
+            href: '#'
+          }]
+        }]
+      }) }}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<span class="app-attachment-link {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <a class="govuk-link" href="{{ params.href }}" {%- if params.target %} target="{{ params.target }}"{% endif %}>
+    {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+  </a>
+  {% if params.metadata %}(
+    {%- if params.metadata.contentType -%}
+      <span class="{{- params.metadata.classes if params.metadata.classes else 'app-attachment-link__attribute' }}"><abbr title="{{ params.metadata.contentType | parseContentType('title') }}" class="app-attachment__abbr">{{ params.metadata.contentType | parseContentType }}</abbr></span>
+    {%- endif -%}
+    {%- if params.metadata.fileSize %},
+      <span class="{{- params.metadata.classes if params.metadata.classes else 'app-attachment-link__attribute' }}">{{ params.metadata.fileSize | fileSizeFormat }}</span>
+    {%- endif -%}
+    {%- if params.metadata.pageCount %},
+      <span class="{{- params.metadata.classes if params.metadata.classes else 'app-attachment-link__attribute' }}">{{ params.metadata.pageCount }} {{ 'pages' if params.metadata.pageCount > 1 else 'page' }}</span>
+    {%- endif -%}
+  ){% endif -%}
+</span>

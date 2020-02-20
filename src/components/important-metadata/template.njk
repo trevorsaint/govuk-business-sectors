@@ -1,0 +1,19 @@
+{%- if params.items %}
+<div class="app-important-metadata {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- if params.heading %}
+    <h{{ params.heading.headingLevel | default(2) }} class="app-c-important-metadata__title"{% for attribute, value in params.heading.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </h{{ params.heading.headingLevel | default(2) }}>
+  {% endif -%}
+  <dl{% if params.itemClasses %} class="{{ params.itemClasses }}"{% endif %}>
+    {%- for item in params.items %}
+    <dt class="app-important-metadata__term {{- ' ' + item.term.classes if item.term.classes }}"{% for attribute, value in item.term.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{- item.term.html | safe if item.term.html else item.term.text -}}
+    </dt>
+    <dd class="app-important-metadata__definition {{- ' ' + item.definition.classes if item.definition.classes }}"{% for attribute, value in item.definition.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{- item.definition.html | safe if item.definition.html else item.definition.text -}}
+    </dd>
+    {% endfor -%}
+  </dl>
+</div>
+{% endif -%}

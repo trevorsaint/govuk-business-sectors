@@ -1,0 +1,156 @@
+/* ==========================================================================
+   #COOKIE BANNER
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_cookie-banner.scss
+   ========================================================================== */
+
+   $govuk-cookie-banner-background: govuk-colour("white");
+   $govuk-cookie-banner-text-green: govuk-colour("green");
+
+   .js-enabled {
+     .app-cookie-banner {
+       display: none; // shown with JS, always on for non-JS
+     }
+   }
+
+   .app-cookie-banner {
+     @include govuk-font($size: 19);
+     padding: govuk-spacing(2) 0;
+     background-color: $govuk-cookie-banner-background;
+     border: 2px solid govuk-colour("black");
+   }
+
+   .app-cookie-banner__message {
+     display: inline-block;
+     margin-bottom: govuk-spacing(1);
+     padding-right: govuk-spacing(4);
+     padding-bottom: govuk-spacing(2);
+     color: $govuk-cookie-banner-text-green;
+   }
+
+   .app-cookie-banner__buttons {
+     @include govuk-clearfix;
+
+     @include govuk-media-query($from: desktop) {
+       display: inline-block;
+     }
+   }
+
+   .app-cookie-banner__button {
+     display: inline-block;
+     width: 100%;
+
+     .app-button {
+       background-color: govuk-colour("white");
+       border-color: govuk-colour("green");
+       color: govuk-colour("green");
+       box-shadow: none;
+     }
+
+     @include govuk-media-query($from: mobile, $until: desktop) {
+       &.app-cookie-banner__button-accept {
+         float: left;
+         width: 49%;
+       }
+
+       &.app-cookie-banner__button-settings {
+         .js-enabled & {
+           float: right;
+           width: 49%;
+         }
+       }
+     }
+
+     @include govuk-media-query($from: desktop) {
+       width: auto;
+     }
+
+     @include govuk-media-query($until: 455px) {
+       width: 100%;
+     }
+   }
+
+   .app-cookie-banner__button-accept {
+     display: none;
+
+     .js-enabled & {
+       display: inline-block;
+     }
+   }
+
+   .app-cookie-banner__confirmation {
+     display: none;
+     position: relative;
+     padding: govuk-spacing(1);
+
+
+     // This element is focused using JavaScript so that it's being read out by screen readers
+     // for this reason we don't want to show the default outline or emphasise it visually using `govuk-focused-text`
+     &:focus {
+       outline: none;
+     }
+   }
+
+   .app-cookie-banner__confirmation-message,
+   .app-cookie-banner__hide-button {
+     display: block;
+
+     @include govuk-media-query($from: desktop) {
+       display: inline-block;
+     }
+   }
+
+   .app-cookie-banner__confirmation-message {
+     margin-right: govuk-spacing(4);
+
+     @include govuk-media-query($from: desktop) {
+       max-width: 90%;
+     }
+   }
+
+   .app-cookie-banner__hide-button {
+     @include govuk-font($size: 19);
+     outline: 0;
+     border: 0;
+     background: none;
+     text-decoration: underline;
+     color: $govuk-link-colour;
+     padding: govuk-spacing(0);
+     margin-top: govuk-spacing(2);
+
+     &:hover {
+       color: $govuk-link-hover-colour;
+       cursor: pointer;
+     }
+
+     &:focus {
+       @include govuk-focused-text;
+     }
+
+     @include govuk-media-query($from: desktop) {
+       margin-top: govuk-spacing(0);
+       position: absolute;
+       right: govuk-spacing(1);
+     }
+   }
+
+   // Override the styles from govuk_template
+   // scss-lint:disable IdSelector
+   // sass-lint:disable no-ids
+   .app-cookie-banner#global-cookie-message {
+     background-color: $govuk-cookie-banner-background;
+     padding: govuk-spacing(4) 0;
+     box-sizing: border-box;
+
+     .app-cookie-banner__message,
+     .app-cookie-banner__buttons,
+     .app-cookie-banner__confirmation,
+     .app-cookie-banner__confirmation-message {
+       @include govuk-font($size: 19);
+     }
+
+     p {
+       margin: 0;
+     }
+   }
+   // sass-lint:enable no-ids
+   // scss-lint:enable IdSelector

@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #TAXONOMY LIST
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_taxonomy-list.scss
+   ========================================================================== */
+
+   .app-taxonomy-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: govuk-spacing(3) 0 0 0;
+    padding: 0;
+
+    @include govuk-media-query($from: tablet) {
+      margin-right: -25px;
+    }
+  }
+
+  .app-taxonomy-list__item {
+    list-style: none;
+
+    @include govuk-media-query($from: tablet) {
+      box-sizing: border-box;
+      width: 33%;
+      padding-right: govuk-spacing(2);
+      vertical-align: top;
+    }
+  }

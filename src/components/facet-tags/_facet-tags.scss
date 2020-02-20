@@ -1,0 +1,141 @@
+/* ==========================================================================
+   #FACET TAGS
+   Based on https://raw.githubusercontent.com/alphagov/finder-frontend/3b7356fb4e62d9919e71c55a589823ff74443fca/app/assets/stylesheets/finder_frontend.scss
+   ========================================================================== */
+
+   .app-facet-tags {
+    padding-bottom: govuk-spacing(1);
+  }
+
+  .app-facet-tags__group {
+    padding: govuk-spacing(1);
+
+    &:nth-child(odd) {
+      background-color: govuk-colour("light-grey", $legacy: "grey-4");
+    }
+  }
+
+  .app-facet-tags__wrapper {
+    vertical-align: middle;
+    margin: 5px 0;
+
+    @include govuk-media-query($from: tablet) {
+      display: inline-block;
+    }
+  }
+
+  .app-facet-tags__wrapper:first-of-type .app-facet-tags__preposition:first-of-type {
+    font-weight: bold;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .app-facet-tags__preposition {
+    @include govuk-font(16);
+    padding: 0px 5px 5px 2px;
+    margin: 0;
+    vertical-align: middle;
+    text-transform: lowercase;
+
+    @include govuk-media-query($from: tablet) {
+      display: table-cell;
+      padding: 0 5px 0 2px;
+    }
+  }
+
+  .app-facet-tag {
+    display: block;
+    position: relative;
+    padding: 5px;
+    border: 1px solid govuk-colour("dark-grey", $legacy: "grey-1");
+    border-radius: 5px;
+    background-color: govuk-colour("light-grey", $legacy: "grey-4");
+
+    .js-enabled & {
+      padding: 8px 7px 7px 23px;
+    }
+
+    @include govuk-media-query($from: tablet) {
+      display: table-cell;
+    }
+  }
+
+  .app-facet-tag__text {
+    @include govuk-font(16);
+    display: inline-block;
+    margin-left: 0;
+    margin-bottom: 0;
+
+    .js-enabled & {
+      margin-left: 5px;
+    }
+  }
+
+  .app-facet-tag__remove {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+    // border-radius: 5px;
+    font-weight: bold;
+    @include govuk-font(16, $weight: bold);
+    text-align: left;
+    cursor: pointer;
+    color: govuk-colour('black');
+    text-decoration: none;
+    background: none;
+    border: 0;
+
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+      outline-offset: 0;
+    }
+
+    .js-enabled & {
+      display: inline-block;
+      border: 1px solid transparent;
+      &:focus {
+        -webkit-box-shadow: inset 0 0 0 2px;
+        box-shadow: inset 0 0 0 2px;
+        border: solid 1px govuk-colour("black");
+      }
+    }
+  }
+
+  // .app-facet-toggle {
+  //  display: none;
+  //  margin-bottom: govuk-spacing(6);
+  // }
+  //
+  // .js-enabled {
+  //  .app-facet-toggle {
+  //    display: inline-block;
+  //  }
+  //
+  //  .app-facet-toggle__content {
+  //    display: block;
+  //
+  //    &.app-facet-toggle__content--hide {
+  //      display: none;
+  //    }
+  //  }
+  //
+  //  .app-facet-toggle--only-on-mobile {
+  //    .app-facet-toggle {
+  //      @include govuk-media-query($from: tablet) {
+  //        display: none;
+  //      }
+  //    }
+  //
+  //    .app-facet-toggle__content.app-facet-toggle__content--hide {
+  //      @include govuk-media-query($from: tablet) {
+  //        display: block;
+  //      }
+  //    }
+  //  }
+  // }

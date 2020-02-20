@@ -1,0 +1,14 @@
+<div class="app-step-nav-header"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <span class="app-step-nav-header__part-of"{% for attribute, value in params.label.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{- params.label.html | safe if params.label.html else params.label.text | default('Part of') -}}
+  </span>
+  {%- if params.heading.href %}
+    <a href="{{ params.heading.href }}" class="app-step-nav-header__title"{% for attribute, value in params.heading.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </a>
+  {% else %}
+    <span class="app-step-nav-header__title"{% for attribute, value in params.heading.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </span>
+  {% endif -%}
+</div>

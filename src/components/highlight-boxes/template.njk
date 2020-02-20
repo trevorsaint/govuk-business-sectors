@@ -1,0 +1,27 @@
+{%- if params.items %}
+<ol class="app-highlight-boxes {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- for item in params.items %}
+  <li class="app-highlight-boxes__item-wrapper {{- ' ' + item.classes if item.classes }}"{% for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <div class="app-highlight-boxes__item {{- ' app-highlight-boxes--inverse' if params.inverse }}">
+      <a class="app-highlight-boxes__title {{- ' app-highlight-boxes__title--featured' if item.featured }}" href="{{ item.href }}">
+        {{- item.title.html | safe if item.title.html else item.title.text -}}
+      </a>
+      <p class="app-highlight-boxes__description {{- ' ' + item.description.classes if item.description.classes }}">
+        {{- item.description.html | safe if item.description.html else item.description.text -}}
+      </p>
+      {% if item.metadata.document_type %}
+        <p class="app-highlight-boxes__metadata">{{ item.metadata.document_type }}</p>
+      {% endif -%}
+      {% if item.metadata.organisation %}
+        <p class="app-highlight-boxes__metadata">{{ item.metadata.organisation }}</p>
+      {% endif -%}
+      {%- if item.metadata.public_updated_at %}
+        <time class="app-highlight-boxes__metadata" datetime="{{ item.metadata.public_updated_at }}">
+          {{- item.metadata.public_updated_at | date('D MMMM YYYY') -}}
+        </time>
+      {% endif -%}
+    </div>
+  </li>
+  {% endfor -%}
+</ol>
+{% endif -%}

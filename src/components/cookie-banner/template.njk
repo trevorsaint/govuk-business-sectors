@@ -1,0 +1,27 @@
+<div class="app-cookie-banner {{- ' ' + params.classes if params.classes }}" id="global-cookie-message" role="region"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <div class="app-cookie-banner__wrapper govuk-width-container">
+        <p class="app-cookie-banner__message">
+          {{- params.message.html | safe if params.message.html else params.message.text | default('GOV.UK uses cookies to make the site simpler.') -}}
+        </p>
+        <div class="app-cookie-banner__buttons"{% for attribute, value in params.buttons.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+            <div class="app-cookie-banner__button {{- ' app-cookie-banner__button-accept' + params.buttons.accept.classes if params.buttons.accept.classes }}">
+              <button class="app-button govuk-button app-button--secondary app-button--inline" accept-cookies="true" type="submit">
+                {{- params.buttons.accept.html | safe if params.buttons.accept.html else params.buttons.accept.text | default('Accept cookies') -}}
+              </button>
+            </div>
+            <div class="app-cookie-banner__button {{- ' app-cookie-banner__button-settings' + params.buttons.settings.classes if params.buttons.settings.classes }}">
+              <a class="app-button govuk-button app-button--secondary app-button--inline" href="{{ params.buttons.settings.href }}" role="button">
+                {{- params.buttons.settings.html | safe if params.buttons.settings.html else params.buttons.settings.text | default('Cookie settings') -}}
+              </a>
+            </div>
+        </div>
+    </div>
+    <div class="app-cookie-banner__confirmation govuk-width-container" tabindex="-1">
+        <p class="app-cookie-banner__confirmation-message">
+          {{- params.confirmation.html | safe if params.confirmation.html else params.confirmation.text | default('You’ve accepted all cookies. You can <a class="govuk-link" href="/help/cookies"> change your cookie settings</a> at any time.') -}}
+        </p>
+        <button class="app-cookie-banner__hide-button" data-hide-cookie-banner="true">
+          {{- params.confirmation.button.html | safe if params.confirmation.button.html else params.confirmation.button.text | default('Hide') -}}
+        </button>
+    </div>
+</div>

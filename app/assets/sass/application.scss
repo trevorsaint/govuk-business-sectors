@@ -1,0 +1,186 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+
+// We can’t mount GOV.UK Frontend's assets at root as it’s done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+
+// Patterns that aren’t in Frontend
+@import "patterns/step-by-step-navigation";
+@import "patterns/task-list";
+@import "patterns/related-items";
+
+// Brexit specific
+@import "mixins/all";
+@import "settings/all";
+@import "tools/all";
+@import "core/all";
+@import "components/all";
+@import "brexit/all";
+
+// Import local dependencies
+@import "src/all";
+
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+.app-tag--prototype {
+  background-color: govuk-colour('red');
+}
+
+.app-background--on-govuk-blue {
+  background-color: govuk-colour('blue');
+}
+
+.app-font-colour--white {
+  color: govuk-colour("white");
+}
+
+.app-email-link {
+  display: block;
+  font-weight: bold;
+  padding: 20px;
+  background: #f8f8f8;
+}
+
+.brexit-checker-actions__description {
+  display: block;
+  padding: 20px;
+  background: #f8f8f8;
+}
+
+.govuk-section-break--bold {
+  border-bottom: 3px solid govuk-colour("blue");
+}
+
+@include govuk-media-query($from: tablet) {
+  .govuk-section-break--visible-mobile-only {
+    display: none;
+  }
+}
+
+.govuk-footer--border-top {
+  border-top: 10px solid govuk-colour("blue");
+}
+
+.facet-tags {
+  padding-bottom: 5px;
+}
+
+.result-info {
+    margin: 0 0 20px 0;
+    border-bottom: solid 1px #0b0c0c;
+}
+
+.facet-toggle {
+  display: none;
+  margin-bottom: govuk-spacing(6);
+}
+
+.js-enabled {
+  .facet-toggle {
+    display: inline-block;
+  }
+
+  .facet-toggle__content {
+    display: block;
+
+    &.facet-toggle__content--hide {
+      display: none;
+    }
+  }
+
+  .facet-toggle--only-on-mobile {
+    .facet-toggle {
+      @include govuk-media-query($from: tablet) {
+        display: none;
+      }
+    }
+
+    .facet-toggle__content.facet-toggle__content--hide {
+      @include govuk-media-query($from: tablet) {
+        display: block;
+      }
+    }
+  }
+}
+
+.app-c-button-as-link {
+  padding: 0;
+  border-width: 0;
+  color: $govuk-link-colour;
+  background: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  text-decoration: underline;
+
+  // we need consistent font-size across breakpoints
+  // so we cannot use govuk-font mixin
+  font-size: 16px;
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+
+  // Remove default button focus outline in Firefox
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}
+
+.app-email-link .app-email-link__link:visited .app-email-link__icon {
+    fill: #4c2c92;
+}
+
+.app-email-link .app-email-link__link .app-email-link__icon {
+    position: relative;
+    margin-right: 10px;
+    top: 5px;
+    fill: #005ea5;
+}
+
+.action-audience__heading {
+  font-size: 27px;
+  line-height: 1.1111111111;
+}
+
+.campaign__taxon {
+  border-top: 2px solid govuk-colour("blue");
+  margin-bottom: govuk-spacing(4);
+
+  @include govuk-media-query($from: tablet) {
+    &--variable-border {
+      border: none;
+    }
+  }
+}
+
+.app-call-to-action,
+.app-panel {
+  margin: govuk-spacing(9) 0 govuk-spacing(6) 0;
+  background-color: govuk-colour("light-grey");
+  padding: govuk-spacing(4);
+}
+
+.app-call-to-action:first-child,
+.app-panel:first-child {
+  margin-top: 0;
+}
+
+// .govuk-form-footer {
+//   margin-bottom: govuk-spacing(9) * 2;
+// }
+
+.govuk-form-footer__alt-cta-link {
+  @include govuk-font($size: 19);
+  display: block;
+  text-align: center;
+  padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2);
+  margin-top: govuk-spacing(3);
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    margin-top: 0;
+  }
+}

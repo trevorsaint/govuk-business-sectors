@@ -1,0 +1,187 @@
+/* ==========================================================================
+   #IMAGE CARD
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_image-card.scss
+   ========================================================================== */
+
+   .app-image-card {
+    @include govuk-clearfix;
+    @include govuk-text-colour;
+    position: relative;
+    margin-bottom: govuk-spacing(6);
+   }
+
+   .app-image-card__image-wrapper {
+    margin: 0;
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: govuk-spacing(2);
+    }
+
+    + .app-image-card__text-wrapper {
+      @include govuk-media-query($until: tablet) {
+        padding-left: 0;
+      }
+    }
+   }
+
+   @include govuk-media-query($from: mobile, $until: tablet) {
+    .app-image-card {
+      margin: 0 (- govuk-spacing(3)) govuk-spacing(6) (- govuk-spacing(3));
+    }
+
+    .app-image-card__image-wrapper {
+      @include govuk-grid-column($width: one-third, $at: mobile);
+    }
+
+    .app-image-card__text-wrapper {
+      @include govuk-grid-column($width: two-thirds, $at: mobile);
+    }
+   }
+
+   .app-image-card__image {
+    display: block;
+    max-width: 100%;
+   }
+
+   .app-image-card__title {
+    @include govuk-font(19, $weight: bold);
+    margin: 0;
+   }
+
+   .app-image-card__title-link {
+    @extend %govuk-link;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+
+    // the after element extends the link to cover the image, removing the
+    // need for a duplicate link. Other elements apart from the image are given
+    // position relative and a higher z-index to put them above the after element
+    &:after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      $ie-background: rgba(255, 255, 255, 0);
+      background: $ie-background; // because internet explorer
+    }
+
+    @include govuk-media-query($from: mobile, $until: tablet) {
+      &:after {
+        left: govuk-spacing(3);
+        right: govuk-spacing(3);
+      }
+    }
+   }
+
+   .app-image-card__context,
+   .app-image-card__metadata,
+   .app-image-card__description {
+    position: relative;
+    z-index: 2;
+   }
+
+   .app-image-card__context,
+   .app-image-card__metadata {
+    @include govuk-font(14);
+    margin: 0 0 (govuk-spacing(3) / 2);
+    color: govuk-colour("dark-grey", $legacy: "grey-1");
+
+    @include govuk-media-query($from: tablet) {
+      margin-bottom: 0;
+    }
+   }
+
+   .app-image-card__description {
+    @include govuk-font($size: 16);
+    padding-top: (govuk-spacing(3) / 2);
+    word-wrap: break-word;
+   }
+
+   .app-image-card__list {
+    @include govuk-font($size: 16);
+    position: relative;
+    z-index: 2;
+    padding: (govuk-spacing(3) / 2) 0 0 0;
+    margin: 0;
+    list-style: none;
+
+    .app-image-card__list-item {
+      margin-bottom: govuk-spacing(1);
+    }
+
+    .app-image-card__list-item-link {
+      @extend %govuk-link;
+      line-height: 1.35em;
+    }
+
+    &.app-image-card__list--indented {
+      padding-left: govuk-spacing(3);
+
+      .app-image-card__list-item {
+        position: relative;
+
+        &:before {
+          content: "-";
+          position: absolute;
+          left: (- govuk-spacing(3));
+        }
+      }
+    }
+   }
+
+   .app-image-card--large.app-image-card {
+    margin: 0 0 govuk-spacing(6) 0;
+   }
+
+   .app-image-card--large {
+    .app-image-card__image-wrapper {
+      @include govuk-grid-column($width: two-thirds, $at: tablet);
+
+      margin-bottom: govuk-spacing(2);
+      float: none;
+      width: auto;
+      max-width: 100%;
+      padding: 0;
+
+      @include govuk-media-query($from: tablet) {
+        padding: 0 govuk-spacing(2) 0 0;
+        margin-bottom: 0;
+      }
+    }
+
+    .app-image-card__text-wrapper {
+      @include govuk-grid-column($width: one-third, $at: tablet);
+
+      padding: 0;
+      overflow: hidden;
+
+      @include govuk-media-query($from: tablet) {
+        padding: 0 govuk-spacing(3);
+        margin-bottom: 0;
+      }
+    }
+
+    .app-image-card__title {
+      @include govuk-font(24, $weight: bold);
+      padding-bottom: govuk-spacing(2);
+    }
+
+    .app-image-card__title-link:after {
+      left: 0;
+      right: 0;
+    }
+
+    .app-image-card__description {
+      @include govuk-font(19);
+    }
+   }

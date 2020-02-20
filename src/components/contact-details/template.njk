@@ -1,0 +1,40 @@
+<div class="app-contact-details {{- ' app-contact-details--small' if params.small }} {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- if params.heading %}
+  <h{{ params.heading.headingLevel | default(2) }} class="app-contact-details__heading {{- ' ' + params.heading.classes if params.heading.classes }}"{% for attribute, value in params.heading.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+  </h{{ params.heading.headingLevel | default(2) }}>
+  {% endif -%}
+  {%- if params.lead %}
+  <p class="{{ 'govuk-body-s' if params.small else 'govuk-body' }} {{- ' ' + params.lead.classes if params.lead.classes }}">
+    {{- params.lead.html | safe if params.lead.html else params.lead.text -}}
+  </p>
+  {% endif -%}
+  {%- for section in params.sections %}
+    <dl class="app-contact-details-list">
+      {%- for item in section.items %}
+        <div class="app-contact-details-list__row">
+          <dt class="app-contact-details-list__heading {{- ' ' + item.heading.classes if item.heading.classes }}">
+            {{- item.heading.html | safe if item.heading.html else item.heading.text -}}
+          </dt>
+          {%- for description in item.descriptions %}
+            <dd class="app-contact-details-list__description {{- ' ' + description.classes if description.classes }}">
+              {{- description.html | safe if description.html else description.text -}}
+            </dd>
+            {%- if not loop.last %}
+            <span class="app-contact-details-list__preposition">
+              {{- item.preposition if item.preposition else 'or' -}}
+            </span>
+            {% endif %}
+          {% endfor -%}
+        </div>
+      {% endfor -%}
+    </dl>
+  {% endfor -%}
+  {%- if params.action %}
+  <p class="{{ 'govuk-body-s' if params.small else 'govuk-body' }} {{- ' ' + params.action.classes if params.action.classes }}">
+    <a href="{{ params.action.href }}">
+      {{- params.action.html | safe if params.action.html else params.action.text -}}
+    </a>
+  </p>
+  {% endif -%}
+</div>

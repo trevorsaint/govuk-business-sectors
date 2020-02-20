@@ -1,0 +1,8 @@
+.govuk-alert-list {
+  @include govuk-font(19);
+  @include list-reset();
+}
+
+.govuk-alert-list__item {
+  margin-bottom: govuk-spacing(4);
+}

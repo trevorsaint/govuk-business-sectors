@@ -1,0 +1,65 @@
+/* ==========================================================================
+   #PUBLISHED DATES
+   Based on https://github.com/alphagov/government-frontend/blob/master/app/assets/stylesheets/components/_published-dates.scss
+   ========================================================================== */
+   .app-c-published-dates {
+    @include govuk-font(16);
+    direction: ltr;
+    line-height: 1.45em;
+  }
+
+  .app-c-published-dates-list {
+    @include govuk-clearfix;
+  }
+
+
+  .app-c-published-dates__term {
+    margin-top: .5em;
+    line-height: 1.4;
+    box-sizing: border-box;
+    float: left;
+    clear: left;
+    padding-right: govuk-spacing(1);
+    margin-top: 0;
+  }
+
+  .app-c-published-dates__definition {
+    margin: 0;
+    line-height: 1.4;
+    float: left;
+    padding-right: govuk-spacing(1);
+  }
+
+  .app-c-published-dates__toggle {
+   display: none;
+
+   .js-enabled & {
+     display: inline-block;
+   }
+
+  }
+
+  .app-c-published-dates__change-history {
+   margin: govuk-spacing(4) 0;
+   padding: 0px;
+
+   &.js-hidden {
+     display: none;
+   }
+
+  }
+
+  .app-c-published-dates__change-item {
+   list-style-type: none;
+   margin-bottom: govuk-spacing(2);
+  }
+
+  .app-c-published-dates__change-date {
+   display: block;
+   @include govuk-font($size: 16, $weight: "bold");
+  }
+
+  .app-c-published-dates--history {
+   padding-top: govuk-spacing(2);
+   border-top: 1px solid govuk-colour("mid-grey");
+  }

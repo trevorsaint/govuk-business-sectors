@@ -1,0 +1,31 @@
+.govuk-stay-informed {
+  @include govuk-responsive-margin(8, "top");
+  background-color: govuk-brexit-colour("lightgrey");
+  border: 1px solid govuk-brexit-colour("darkgrey");
+  padding: govuk-spacing(5);
+  position: relative;
+}
+
+
+// .govuk-stay-informed__link:before {
+//   bottom: 0;
+//   content: "";
+//   height: 100%;
+//   left: 0;
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   width: 100%;
+// }
+
+
+.govuk-stay-informed__icon {
+  float: left;
+  margin-right: govuk-spacing(1);
+  position: relative;
+  top: 3px;
+}
+
+.govuk-stay-informed__title {
+  margin-bottom: govuk-spacing(2);
+}

@@ -1,0 +1,18 @@
+/* ==========================================================================
+   #BACK TO TOP
+   Based on https://github.com/alphagov/government-frontend/blob/master/app/assets/stylesheets/components/_back-to-top.scss
+   ========================================================================== */
+
+.app-back-to-top {
+  display: inline-block;
+  margin-bottom: govuk-spacing(3);
+  margin-left: govuk-spacing(3);
+  margin-right: govuk-spacing(3);
+}
+
+.app-back-to-top__icon {
+  float: left;
+  margin-right: .3em;
+  width: .8em;
+  height: .968em;
+}

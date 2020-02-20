@@ -1,0 +1,13 @@
+/* ==========================================================================
+   #ATTACHMENT
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/8d5ed36c151398794a6af86f57fb3177d16b9c97/app/assets/stylesheets/govuk_publishing_components/components/_attachment-link.scss
+   ========================================================================== */
+
+.app-attachment-link__attribute {
+  @include govuk-font(16);
+}
+
+.app-attachment-link__abbr {
+  cursor: help;
+  text-decoration: none;
+}

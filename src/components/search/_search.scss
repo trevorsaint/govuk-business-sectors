@@ -1,0 +1,173 @@
+/* ==========================================================================
+   #SEARCH
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_search.scss
+   ========================================================================== */
+   $input-size: 40px;
+   $large-input-size: 50px;
+
+   .app-search {
+     position: relative;
+     margin-bottom: 30px;
+   }
+
+   .app-search__label {
+     display: block;
+     h1 {
+       @include govuk-font($size: 19, $line-height: $input-size);
+       margin: 0;
+     }
+   }
+
+   .app-search__input[type="search"] { // overly specific to prevent some overrides from outside
+     @include govuk-font($size: 19, $line-height: (28 / 19));
+     padding: 6px;
+     margin: .5em 0;
+     width: 100%;
+     height: $input-size;
+     border: 0;
+     background: govuk-colour("white");
+     border-radius: 0; //otherwise iphones apply an automatic border radius
+     box-sizing: border-box;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     &:focus {
+       outline: $govuk-focus-width solid $govuk-focus-colour;
+       outline-offset: inherit;
+     }
+   }
+
+   .app-search__submit {
+     padding: 6px;
+     border: 0;
+     cursor: pointer;
+     border-radius: 0;
+     &:focus {
+       outline: $govuk-focus-width solid $govuk-focus-colour;
+     }
+   }
+
+   .js-enabled {
+     .app-search__label {
+       @include govuk-font($size: 19, $line-height: $input-size);
+       position: absolute;
+       left: govuk-spacing(3);
+       top: 1px;
+       z-index: 1;
+       color: $govuk-secondary-text-colour;
+     }
+   }
+
+   .app-search__item-wrapper {
+     display: table;
+     width: 100%;
+     background: govuk-colour("white");
+   }
+
+   //general class applied to search input and button wrapper
+   .app-search__item {
+     position: relative;
+     display: table-cell;
+     vertical-align: top;
+   }
+
+   .app-search__input[type="search"] {
+     margin: 0;
+     // the .focus class is added by JS and ensures that the input remains above the label once clicked/filled in
+     &:focus,
+     &.focus {
+       z-index: 2;
+     }
+   }
+
+   .app-search__submit-wrapper {
+     width: 1%;
+   }
+
+   .app-search__submit {
+     position: relative;
+     padding: 0;
+     width: $input-size;
+     height: $input-size;
+     background-image: url("/public/images/search-button.png");
+     background-repeat: no-repeat;
+     background-position: 2px 50%;
+     text-indent: -5000px;
+     overflow: hidden;
+     &:focus {
+       z-index: 2;
+     }
+     &::-moz-focus-inner {
+       border: 0;
+     }
+     @include govuk-device-pixel-ratio {
+       background-size: 52.5px auto;
+       background-position: 115% 50%;
+     }
+   }
+
+   .app-search--on-govuk-blue {
+     .app-search__label {
+       color: govuk-colour("white");
+     }
+     .app-search__submit {
+       background-color: govuk-colour("black");
+       color: govuk-colour("white");
+       &:hover {
+         background-color: lighten(govuk-colour("black"), 5%);
+       }
+     }
+     .js-enabled & {
+       .app-search__label {
+         color: $govuk-secondary-text-colour;
+       }
+     }
+   }
+
+   .app-search--on-white {
+     .app-search__label {
+       color: govuk-colour("black");
+     }
+     .app-search__input[type="search"] {
+       border: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
+     }
+     .app-search__submit {
+       background-color: govuk-colour("blue");
+       color: govuk-colour("white");
+       &:hover {
+         background-color: darken(govuk-colour("blue"), 5%);
+       }
+     }
+     .app-search__input[type="search"] {
+       border-right: 0;
+     }
+     .js-enabled & {
+       .app-search__label {
+         color: $govuk-secondary-text-colour;
+       }
+     }
+   }
+
+   .app-search--large {
+     .app-search__label {
+       @include govuk-font($size: 19, $line-height: $large-input-size);
+     }
+     .app-search__input[type="search"] {
+       height: $large-input-size;
+     }
+     .app-search__submit {
+       width: $large-input-size;
+       height: $large-input-size;
+       background-position: 8px 50%;
+       @include govuk-device-pixel-ratio {
+         background-size: 60px auto;
+         background-position: 160% 50%;
+       }
+     }
+   }
+   .app-search--separate-label {
+     .app-search__label {
+       position: relative;
+       left: auto;
+     }
+   }

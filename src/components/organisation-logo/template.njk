@@ -1,0 +1,17 @@
+{%- if params.text or params.html %}
+  <div class="app-organisation-logo {{- ' brand--' + params.brand if params.brand }} {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {% if params.href %}
+      <a class="app-organisation-logo__container app-organisation-logo__link {{- ' app-organisation-logo__crest' if params.crest }} {{- ' app-organisation-logo__crest--' + params.crest if params.crest }} {{- ' brand__border-color' if params.brand }}" href="{{ params.href }}"{% for attribute, value in params.link.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+        <span class="app-organisation-logo__name">
+          {{- params.html | safe if params.html else params.text -}}
+        </span>
+      </a>
+    {% else %}
+      <div class="app-organisation-logo__container {{- ' app-organisation-logo__crest' if params.crest }} {{- ' app-organisation-logo__crest--' + params.crest if params.crest }} {{- ' brand__border-color' if params.brand }}">
+        <span class="app-organisation-logo__name ">
+          {{- params.html | safe if params.html else params.text -}}
+        </span>
+      </div>
+    {% endif %}
+  </div>
+{% endif -%}

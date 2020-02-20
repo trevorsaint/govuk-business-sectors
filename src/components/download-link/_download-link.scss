@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #DOWNLOAD LINK
+   Based on https://github.com/alphagov/government-frontend/blob/master/app/assets/stylesheets/components/_download-link.scss
+   ========================================================================== */
+ .app-c-download-link {
+   display: inline-block;
+   @include govuk-font($size: 19, $weight: "bold");
+   margin-top: govuk-spacing(3);
+   margin-bottom: govuk-spacing(3);
+
+   &:focus {
+     @include govuk-focused-text;
+   }
+
+   @include govuk-media-query(tablet) {
+     margin-top: govuk-spacing(6);
+   }
+
+ }
+
+ .app-c-download-link__icon {
+   margin-right: govuk-spacing(2);
+   height: 1.31578947368em; // 25 / 19
+   width: 1.31578947368em;
+   vertical-align: middle;
+ }

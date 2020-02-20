@@ -1,0 +1,97 @@
+/* ==========================================================================
+   #HIGHLIGHT BOXES
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_highlight-boxes.scss
+   ========================================================================== */
+   .app-highlight-boxes {
+    @include govuk-text-colour;
+    display: flex;
+    flex-wrap: wrap;
+    margin: govuk-spacing(3) 0 0 0;
+    padding: 0;
+
+    @include govuk-media-query($from: tablet) {
+      margin-right: -25px;
+    }
+   }
+
+   .app-highlight-boxes__item-wrapper {
+    @include govuk-font(19);
+    box-sizing: border-box;
+    list-style-type: none;
+    padding: govuk-spacing(1) govuk-spacing(2) govuk-spacing(5) 0;
+    width: 100%;
+
+    @include govuk-media-query($from: tablet) {
+      width: 50%;
+      padding: govuk-spacing(1) govuk-spacing(5) govuk-spacing(5) 0;
+    }
+
+    @include govuk-media-query($from: desktop) {
+      width: (1 / 3) * 100%;
+      padding: govuk-spacing(1) govuk-spacing(5) govuk-spacing(5) 0;
+    }
+   }
+
+   .app-highlight-boxes__item-wrapper--half-width {
+    @include govuk-media-query($from: desktop) {
+      width: 50%;
+      padding: govuk-spacing(1) govuk-spacing(5) govuk-spacing(5) 0;
+    }
+   }
+
+   .app-highlight-boxes__item {
+     box-sizing: border-box;
+     border: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
+     padding: govuk-spacing(3) * 1.5;
+     height: 100%;
+     box-shadow: 7px 7px 0 govuk-colour("white"), 8px 8px 0 govuk-colour("mid-grey", $legacy: "grey-2");
+   }
+
+   .app-highlight-boxes--inverse {
+     background-color: govuk-colour("blue");
+     border: 0;
+     color: govuk-colour("white");
+   }
+
+   .app-highlight-boxes__title {
+     @extend %govuk-link;
+     @include govuk-font(19, $weight: bold);
+     display: block;
+     text-decoration: underline;
+     margin-bottom: 5px;
+   }
+
+   .app-highlight-boxes--inverse {
+     .app-highlight-boxes__title {
+       &:link,
+       &:visited,
+       &:hover {
+         color: govuk-colour("white");
+       }
+
+       &:active,
+       &:focus {
+         color: $govuk-focus-text-colour;
+       }
+     }
+
+     .app-highlight-boxes__title--featured,
+     .app-highlight-boxes__description,
+     .app-highlight-boxes__metadata {
+       color: govuk-colour("white");
+     }
+   }
+
+   .app-highlight-boxes__title--featured {
+     @include govuk-font(24, $weight: bold);
+   }
+
+   .app-highlight-boxes__description {
+     margin: 0 0 govuk-spacing(2) 0;
+   }
+
+   .app-highlight-boxes__metadata {
+     margin: 0 govuk-spacing(3) 0 0;
+     @include govuk-font(16);
+     display: inline-block;
+   }

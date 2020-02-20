@@ -1,0 +1,22 @@
+/* ==========================================================================
+   #TAXON LIST
+   Based on https://github.com/alphagov/collections/blob/master/app/assets/stylesheets/components/_taxon-list.scss
+   ========================================================================== */
+
+   .app-c-taxon-list__item {
+    @include govuk-font(19);
+    list-style: none;
+    margin-bottom: govuk-spacing(4);
+  }
+
+  .app-c-taxon-list__heading {
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .app-c-taxon-list__description {
+    margin-top: govuk-spacing(1);
+  }
+
+  .app-c-taxon-list__link {
+    font-weight: bold;
+  }

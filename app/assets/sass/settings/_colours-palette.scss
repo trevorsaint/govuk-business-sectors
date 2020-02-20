@@ -1,0 +1,28 @@
+// Usage
+// background-color: govuk-brexit-colour("blue");
+// background-color: govuk-transition-colour("light-blue");
+
+$govuk-brexit-colour: (
+  "blue": #182D4E,
+  "red": #E61E32,
+  "dark-red": #BC1526,
+  "darkgrey": #b1b4b6,
+  "lightgrey": #f8f8f8
+) !default;
+
+
+$govuk-transition-colour: (
+  "dark-blue": #182D4E,
+  "light-blue": #259EDA,
+) !default;
+
+
+@function govuk-brexit-colour($color) {
+  $result: map-get($govuk-brexit-colour, $color);
+  @return $result;
+}
+
+@function govuk-transition-colour($color) {
+  $result: map-get($govuk-transition-colour, $color);
+  @return $result;
+}

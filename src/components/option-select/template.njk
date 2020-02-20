@@ -1,0 +1,45 @@
+{#- If an id 'prefix' is not passed, fall back to using the name attribute
+   instead. We need this for error messages and hints as well -#}
+{%- set idPrefix = params.idPrefix if params.idPrefix else params.name -%}
+
+{%- if params.filter %}
+{%- set filter %}
+<label for="{{ idPrefix + '-option-select__filter-input' }}" class="govuk-label govuk-visually-hidden">
+  {{- params.filter.html | safe if params.filter.html else params.filter.text -}}
+</label>
+<input name="option-select-filter" id="{{ idPrefix + '-option-select__filter-input' }}" class="app-c-option-select__filter-input govuk-input" type="text" aria-describedby="{{ idPrefix + '-checkboxes-count' }}" aria-controls="{{ idPrefix + '-checkboxes' }}">
+{% endset -%}
+{#- This is a little bit of a hack. Surely the `escape` filter should work -#}
+{%- set filter = filter | replace('<','&lt;') | replace('>','&gt;') | replace('"','&quot;') -%}
+{% endif -%}
+
+<div id="{{ idPrefix }}" class="app-c-option-select {{- ' ' + params.classes if params.classes }}" data-module="option-select"{% if params.filter %} data-filter-element="{{ filter }}"{% endif %}{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <button class="app-c-option-select__title app-c-option-select__button js-container-head" type="button" aria-expanded="true" id="{{ idPrefix + '-option-select-title' }}" aria-controls="list_of_sectors">
+    {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--up"><path d="m798.16 609.84l-256-256c-16.683-16.683-43.691-16.683-60.331 0l-256 256c-16.683 16.683-16.683 43.691 0 60.331s43.691 16.683 60.331 0l225.84-225.84 225.84 225.84c16.683 16.683 43.691 16.683 60.331 0s16.683-43.691 0-60.331z"></path></svg>
+    <svg version="1.1" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="app-c-option-select__icon app-c-option-select__icon--down"><path d="m225.84 414.16l256 256c16.683 16.683 43.691 16.683 60.331 0l256-256c16.683-16.683 16.683-43.691 0-60.331s-43.691-16.683-60.331 0l-225.84 225.84-225.84-225.84c-16.683-16.683-43.691-16.683-60.331 0s-16.683 43.691 0 60.331z"></path></svg>
+  </button>
+
+  <div role="group" aria-labelledby="{{ idPrefix + '-option-select-title' }}" class="app-c-option-select__container js-options-container" id="{{ idPrefix + '-list-of-options' }}" tabindex="-1">
+    <div class="app-c-option-select__container-inner js-auto-height-inner">
+      <div id="{{ idPrefix + '-checkboxes' }}" class="app-c-checkboxes govuk-form-group" data-module="govuk-checkboxes">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m app-c-checkboxes__legend--hidden">
+            {{- params.fieldset.legend.html | safe if params.fieldset.legend.html else params.fieldset.legend.text -}}
+          </legend>
+          <ul class="govuk-checkboxes app-c-checkboxes__list govuk-checkboxes--small">
+            {%- for item in params.items %}
+              {%- set id = params.idPrefix + '-' + item.id if params.idPrefix else item.id -%}
+              <li class="govuk-checkboxes__item">
+                <input type="checkbox" name="{{ params.name }}" id="{{ id }}" value="{{ item.value }}" class="govuk-checkboxes__input" {{- ' checked' if item.checked }} {{- ' disabled' if item.disabled }}>
+                <label for="{{ id }}" class="govuk-label govuk-checkboxes__label">
+                  {{- item.html | safe if item.html else item.text -}}
+                </label>
+              </li>
+            {% endfor -%}
+          </ul>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

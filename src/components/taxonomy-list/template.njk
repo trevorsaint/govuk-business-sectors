@@ -1,0 +1,48 @@
+{%- from "../document-list/macro.njk" import appDocumentList -%}
+{%- from "../highlight-boxes/macro.njk" import appHighlightBoxes -%}
+{%- from "../image-card/macro.njk" import appImageCard -%}
+
+<ul class="app-taxonomy-list {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {% if params.highlights %}
+    {{ appHighlightBoxes({
+      inverse: params.highlights.inverse,
+      items: params.highlights.items
+    }) }}
+  {% endif -%}
+
+  {% if params.imageCards %}
+
+    {%- for item in params.imageCards.items %}
+      <li class="app-taxonomy-list__item">
+        {{ appImageCard({
+          href: item.href,
+          title: {
+            text: item.title.text,
+            html: item.title.html
+          },
+          description: {
+            text: item.description.text,
+            html: item.description.html
+          },
+          image: {
+            src: item.image.src,
+            alt: item.image.alt
+          },
+          metadata: {
+            public_updated_at: item.metadata.public_updated_at,
+            document_type: item.metadata.document_type
+          }
+        }) }}
+      </li>
+
+    {% endfor -%}
+
+  {% endif -%}
+
+  {% if params.documents %}
+    {{ appDocumentList({
+      classes: 'app-document-list__multi-list',
+      items: params.documents.items
+    }) }}
+  {% endif -%}
+</ul>

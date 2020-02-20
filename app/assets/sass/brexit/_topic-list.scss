@@ -1,0 +1,8 @@
+.govuk-topic-list {
+  @include govuk-font(19, $weight: bold);
+  @include list-reset();
+}
+
+.govuk-topic-list__item {
+  margin-bottom: govuk-spacing(2);
+}

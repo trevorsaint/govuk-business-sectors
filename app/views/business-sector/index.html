@@ -1,8 +1,6 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  GOV.UK Prototype Kit
-{% endblock %}
+{% block pageTitle %}What does your business or organisation do?{% endblock %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -51,7 +49,7 @@
 
     <div class="js-sectors js-hidden" id="sectors">
 
-      <!--hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"-->
+      <!-- Should ideally be building checkboxes using json data -->
 
       <!-- Agriculture Forestry and Fishing -->
       {{ govukCheckboxes({
@@ -67,20 +65,100 @@
         },
         items: [
           {
-            value: "1",
+            value: "",
             text: "Growing of cereals (except rice), leguminous crops and oil seeds"
           },
           {
-            value: "2",
+            value: "",
             text: "Growing of rice"
           },
           {
-            value: "3",
+            value: "",
             text: "Growing of vegetables and melons, roots and tubers"
           },
           {
-            value: "4",
+            value: "",
             text: "Growing of sugar cane"
+          },
+          {
+            value: "",
+            text: "Growing of tobacco"
+          },
+          {
+            value: "",
+            text: "Growing of fibre crops"
+          },
+          {
+            value: "",
+            text: "Growing of other non-perennial crops"
+          },
+          {
+            value: "",
+            text: "Growing of grapes"
+          },
+          {
+            value: "",
+            text: "Growing of tropical and subtropical fruits"
+          },
+          {
+            value: "",
+            text: "Growing of citrus fruits"
+          },
+          {
+            value: "",
+            text: "Growing of pome fruits and stone fruits"
+          },
+          {
+            value: "",
+            text: "Growing of other tree and bush fruits and nuts"
+          },
+          {
+            value: "",
+            text: "Growing of oleaginous fruits"
+          },
+          {
+            value: "",
+            text: "Growing of beverage crops"
+          },
+          {
+            value: "",
+            text: "Growing of spices, aromatic, drug and pharmaceutical crops"
+          },
+          {
+            value: "",
+            text: "Growing of other perennial crops"
+          },
+          {
+            value: "",
+            text: "Plant propagation"
+          },
+          {
+            value: "",
+            text: "Growing of other perennial crops"
+          },
+          {
+            value: "",
+            text: "Plant Raising of dairy cattle"
+          },
+          {
+            value: "",
+            text: "Raising of other cattle and buffaloes"
+          },
+          {
+            value: "",
+            text: "Raising of camels and camelids"
+          },
+          {
+            value: "",
+            text: "Raising of sheep and goats"
+          },
+          {
+            value: "",
+            text: "Raising of swine/pigs"
+          },
+          {
+            value: "",
+            text: "Raising of poultry"
           }
         ]
       }) }}
@@ -113,6 +191,54 @@
           {
             value: "",
             text: "Extraction of crude petroleum"
+          },
+          {
+            value: "",
+            text: "Extraction of natural gas"
+          },
+          {
+            value: "",
+            text: "Mining of iron ores"
+          },
+          {
+            value: "",
+            text: "Mining of uranium and thorium ores"
+          },
+          {
+            value: "",
+            text: "Mining of other non-ferrous metal ores"
+          },
+          {
+            value: "",
+            text: "Quarrying of ornamental and building stone, limestone, gypsum, chalk"
+          },
+          {
+            value: "",
+            text: "Operation of gravel and sand pits; mining of clays and kaolin"
+          },
+          {
+            value: "",
+            text: "Mining of chemical and fertilizer minerals"
+          },
+          {
+            value: "",
+            text: "Extraction of peat"
+          },
+          {
+            value: "",
+            text: "Extraction of salt"
+          },
+          {
+            value: "",
+            text: "Other mining and quarrying n.e.c."
+          },
+          {
+            value: "",
+            text: "Support activities for petroleum and natural gas mining"
+          },
+          {
+            value: "",
+            text: "Support activities for other mining and quarrying"
           }
         ]
       }) }}

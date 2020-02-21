@@ -20,18 +20,11 @@
 
       <div class="govuk-business-sector">
 
-        {{ govukInput({
-          formGroup: {
-            classes: "govuk-!-margin-bottom-3"
-          },
-          label: {
-            text: "Enter your search term. For example, plumbing."
-          },
-          id: "what-does-your-business-or-organisation-do",
-          name: "what-does-your-business-or-organisation-do"
-        }) }}
+        <div id="business-sectors__autocomplete-wrapper" class="govuk-body">
+          {% include "includes/autocomplete.html" %}
+        </div>
 
-        <div class="govuk-business-sector__facets" id="facets" aria-live="assertive"></div>
+        <div class="govuk-business-sector__facets" id="facets" aria-live="assertive" data-module="autocomplete-multiple-results"></div>
 
         {{ govukButton({
           classes: "govuk-!-margin-right-0",
@@ -315,7 +308,9 @@
 
 
 {% block pageScripts %}
+<script type="text/javascript" src="/public/javascripts/accessible-autocomplete.min.js"></script>
 <script src="/public/javascripts/business-sector.js"></script>
+<script type="text/javascript" src="/public/javascripts/autocomplete.js"></script>
 
 <script>
 

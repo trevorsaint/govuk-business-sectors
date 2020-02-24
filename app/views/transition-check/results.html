@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}How to get ready for new rules in 2021: Your results{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Transition period",
+        href: "/transition-check"
+      },
+      {
+        text: "Check how to get ready for new rules in 2021",
+        href: "/transition-check"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">How to get ready for new rules in 2021: Your results</h1>
+
+    <p>Content goes here...</p>
+
+  </div>
+
+</div>
+{% endblock %}

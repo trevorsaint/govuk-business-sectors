@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}Check how to get ready for new rules in 2021{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Transition period",
+        href: "#"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Check how to get ready for new rules in 2021</h1>
+
+    <p>There will be new rules for living, working, travelling and doing business in the UK and EU from 1 January 2021.</p>
+
+    <p>You, your family, or your business should prepare now.</p>
+
+    <p>Answer a few questions to get a list of things you should do to get ready.</p>
+
+    <p>Subscribe to email updates to be notified about any changes that affect you as new rules may be decided.</p>
+
+    <p>
+    {{ govukButton({
+      text: "Start now",
+      href: "/transition-check/run-a-business",
+      isStartButton: true
+    }) }}
+    </p>
+
+    <h2 class="govuk-heading-m">The transition period</h2>
+
+    <p>The UK has left the EU.</p>
+
+    <p>There is now a transition period until the end of 2020 while the UK and EU negotiate additional arrangements.</p>
+
+    <p>The current rules on trade, travel, and business for the UK and EU will continue to apply during the transition period.</p>
+
+  </div>
+
+</div>
+{% endblock %}

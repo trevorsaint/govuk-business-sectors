@@ -16,7 +16,7 @@
 
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-xl">About your business </span>What does your business or organisation do?</h1>
 
-    <form method="get">
+    <form method="method" action="/transition-check/results">
 
       <div class="govuk-business-sector">
 
@@ -292,7 +292,7 @@
         {% endset %}
 
         {{ govukDetails({
-          classes: "js-business-sector",
+          classes: "govuk-!-margin-bottom-0",
           summaryText: "Show full list",
           html: fullListHTML
         }) }}

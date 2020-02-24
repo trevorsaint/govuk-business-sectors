@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}Does your business or organisation do any of the following?{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "/transition-check"
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" action="/transition-check/business-sector">
+
+      {{ govukCheckboxes({
+        idPrefix: "import-export",
+        name: "import-export",
+        fieldset: {
+          legend: {
+            classes: "govuk-fieldset__legend--xl",
+            html: '<span class="govuk-caption-xl">About your business</span>Does your business or organisation do any of the following?',
+            isPageHeading: true
+          }
+        },
+        hint: {
+          html: '<p>Importing and exporting includes temporarily taking goods across the EU border, for example to a trade fair.</p><p class="govuk-hint">Select all that apply.</p>'
+        },
+        items: [
+          {
+            value: "",
+            text: "Import from the EU"
+          },
+          {
+            value: "",
+            text: "Export to the EU"
+          },
+          {
+            value: "",
+            text: "Provide services or do business in the EU"
+          },
+          {
+            value: "",
+            text: "Transporting goods across EU borders"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        classes: "govuk-!-margin-bottom-0",
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

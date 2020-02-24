@@ -30,12 +30,16 @@
   cursor: pointer;
   display: flex;
   margin-right: govuk-spacing(2);
-  margin-top: govuk-spacing(2);
+  margin-bottom: govuk-spacing(2);
   padding-bottom: govuk-spacing(2) - 1px;
   padding-left: govuk-spacing(3) - 1px;
   padding-right: govuk-spacing(2) - 1px;
   padding-top: govuk-spacing(2) - 1px;
   text-align: left;
+
+  &:hover {
+    border-color: govuk-colour("black");
+  }
 
   &:focus {
     border-color: govuk-colour("black");

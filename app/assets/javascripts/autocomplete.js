@@ -26,7 +26,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var input = document.querySelector(".autocomplete__input")
 
     input.addEventListener("blur", function() {
-      document.querySelector("#business-sectors__autocomplete").value = ""
+      setTimeout(function(){ input.value = ""; }, 100);
     })
 
     input.addEventListener("focus", function() {
@@ -263,7 +263,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       checkbox.checked = true; // Uncheck checkbox
     }
 
-    setTimeout(function(){ document.querySelector("#business-sectors__autocomplete").value = "" }, 100);
+    setTimeout(function(){ document.querySelector("#business-sectors__autocomplete").value = ""; document.querySelector("#business-sectors__autocomplete").blur() }, 100);
   }
 
   function addNewFacetButton(text, e) {
@@ -283,3 +283,4 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Modules.Autocomplete = Autocomplete
 })(window.GOVUK.Modules)
+

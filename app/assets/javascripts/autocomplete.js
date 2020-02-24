@@ -23,6 +23,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     var resultsList = document.querySelector(".autocomplete__menu")
+    var input = document.querySelector(".autocomplete__input")
+
+    input.addEventListener("blur", function() {
+      document.querySelector("#business-sectors__autocomplete").value = ""
+    })
 
     resultsList.addEventListener("click", function(e) {
       onAutocompleteSelectItem(e)
@@ -252,8 +257,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     multipleResultsList.appendChild(button);
 
-    // No idea why this isn't clearing the input field as it works when I try it in the browser console...
-    document.querySelector("#business-sectors__autocomplete").value = ""
+    setTimeout(function(){ document.querySelector("#business-sectors__autocomplete").value = "" }, 100);
   }
 
   Modules.Autocomplete = Autocomplete

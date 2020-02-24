@@ -1,7 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 
+// Post data
 router.post('/transition-check/post', function(req, res) {
 
   var data = req.session.data;
@@ -9,9 +10,9 @@ router.post('/transition-check/post', function(req, res) {
   if (data != undefined) {
 
     if (data["run-a-business"] == "yes" && data["import-export"]) {
-      res.redirect('/transition-check/results')
+      res.redirect("/transition-check/results");
     } else {
-      res.redirect('/transition-check/no-action');
+      res.redirect("/transition-check/no-action");
     }
 
   } else {
@@ -19,7 +20,6 @@ router.post('/transition-check/post', function(req, res) {
     res.end;
 
   }
-
 
 });
 

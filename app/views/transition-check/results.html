@@ -83,7 +83,7 @@ How to get ready for new rules in 2021: Your results
       <div class="govuk-grid-column-two-thirds">
 
 
-        {% if "Transporting goods across EU borders" or "Export to the EU" or "Import from the EU" or "" in data["import-export"] %}
+        {% if "Transporting goods across EU borders" or "Export to the EU" or "Import from the EU" in data["import-export"] %}
         <article>
           <h3 class="govuk-heading-s">Check if you need the permission of the intellectual copyright holder to continue to parallel export IP-protected goods from the UK to the EU, Norway, Iceland or Liechtenstein</h3>
           <p>You risk not being able to continue to parallel export IP-protected products from the UK to these locations if you do not have permission.</p>
@@ -92,7 +92,7 @@ How to get ready for new rules in 2021: Your results
         {% endif %}
 
 
-        {% if "Import from the EU" or "Export to the EU" or "" in data["import-export"] %}
+        {% if "Import from the EU" or "Export to the EU" in data["import-export"] %}
         <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
         <article>
           <h3 class="govuk-heading-s">Check the rules on moving plants and plant products between the UK and the EU</h3>
@@ -161,7 +161,7 @@ How to get ready for new rules in 2021: Your results
         {% endif %}
 
 
-        {% if "Import from the EU" or "Export to the EU" or "" in data["import-export"] %}
+        {% if "Import from the EU" or "Export to the EU" in data["import-export"] %}
         <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
         <article>
           <h3 class="govuk-heading-s">Decide how you want to make customs declarations and whether you need to get someone to deal with customs for you</h3>

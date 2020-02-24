@@ -73,11 +73,12 @@ Sector.prototype.onButtonClick = function(checkbox, e) {
   var button = e.target;
   var checkbox = button.getAttribute('aria-controls');
 
-  document.getElementById(checkbox).checked = false; // Uncheck checkbox
   button.remove(); // Remove button
 
-  this.initCheckboxes();
-
+  if (checkbox) {
+    document.getElementById(checkbox).checked = false; // Uncheck checkbox
+    this.initCheckboxes();
+  }
 };
 
 

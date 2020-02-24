@@ -29,6 +29,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       document.querySelector("#business-sectors__autocomplete").value = ""
     })
 
+    input.addEventListener("focus", function() {
+      document.querySelector("#business-sectors__autocomplete").value = ""
+    })
+
+
     resultsList.addEventListener("click", function(e) {
       onAutocompleteSelectItem(e)
     })

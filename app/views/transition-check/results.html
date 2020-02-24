@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}How to get ready for new rules in 2021: Your results{% endblock %}
+{% block pageTitle %}
+How to get ready for new rules in 2021: Your results
+{% endblock %}
 
 {% block beforeContent %}
   {{ govukBreadcrumbs({
@@ -21,16 +23,237 @@
   }) }}
 {% endblock %}
 
+
 {% block content %}
+
+
+
+
+
+
+
+
 <div class="govuk-grid-row">
-
   <div class="govuk-grid-column-two-thirds">
-
     <h1 class="govuk-heading-xl">How to get ready for new rules in 2021: Your results</h1>
+  </div>
+</div>
 
-    <p>Content goes here...</p>
+
+<!-- Mailing list -->
+<div class="govuk-mailinglist">
+  <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">What you need to do may change</h2>
+  <a class="govuk-mailinglist__link govuk-link govuk-link--no-visited-state" href="#">
+    <span class="govuk-mailinglist__link-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 21" width="18" height="21"><path d="M7.05,19.01C7.05,20.11,7.92,21,9,21c1.08,0,1.95-0.89,1.95-1.99H7.05z M15.73,14.82V9c0-3.25-2.2-5.97-5.18-6.69V1.59C10.56,0.71,9.86,0,9,0C8.14,0,7.44,0.71,7.44,1.59v0.72C4.47,3.03,2.27,5.75,2.27,9v5.82l-2.08,2.12V18h17.62v-1.06L15.73,14.82z"/></svg></span>
+    <span class="govuk-mailinglist__link-text">Subscribe to email updates about changes that may affect you and get a link to your results</span>
+  </a>
+</div>
+
+
+<section class="govuk-section">
+
+  <header class="govuk-section__header">
+    <h2 class="govuk-heading-l govuk-!-margin-bottom-0">Your business or organisation</h2>
+  </header>
+
+  <div class="govuk-section__content">
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-one-third">
+        <p class="govuk-body-s">Because you said:</p>
+        <ul class="govuk-list govuk-list--bullet govuk-body-s">
+
+          {% if "yes" in data["run-a-business"] %}
+          <li>You own or operate a business or organisation</li>
+          {% endif %}
+
+          {% if data["import-export"] %}
+
+            {% if "Import from the EU" in data["import-export"] %}
+            <li>Your business imports goods from the EU</li>
+            {% endif %}
+
+            {% if "Export to the EU" in data["import-export"] %}
+            <li>Your business exports goods to the EU</li>
+            {% endif %}
+
+            {% if "Provide services or do business in the EU" in data["import-export"] %}
+            <li>Your business provides services in the EU</li>
+            {% endif %}
+
+            {% if "Transporting goods across EU borders" in data["import-export"] %}
+            <li>Your business transports goods across EU borders</li>
+            {% endif %}
+
+          {% endif %}
+
+        </ul>
+      </div>
+
+      <div class="govuk-grid-column-two-thirds">
+
+
+        <article>
+          <h3 class="govuk-heading-s">Check if you need the permission of the intellectual copyright holder to continue to parallel export IP-protected goods from the UK to the EU, Norway, Iceland or Liechtenstein</h3>
+          <p>You risk not being able to continue to parallel export IP-protected products from the UK to these locations if you do not have permission.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">Exhaustion of IP rights and parallel trade from 1 January 2021</a></p>
+        </article>
+
+
+        <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+        <article>
+          <h3 class="govuk-heading-s">Check the rules on moving plants and plant products between the UK and the EU</h3>
+          <p>You risk plants or plant products being delayed or rejected if you do not follow the right rules.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">Importing and exporting plants and plant products from2021</a></p>
+        </article>
+
+
+        <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+        <article>
+          <h3 class="govuk-heading-s">Check what documents you need to transport goods through the EU, if you’re a haulier</h3>
+          {{ govukInsetText({
+            text: "It takes more than 4 weeks to get the right documents"
+          }) }}
+          <p>You will not be able to transport haulage goods through the EU without the right documents.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">International road haulage: operator licences and permits</a></p>
+        </article>
+
+
+        <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+        <article>
+          <h3 class="govuk-heading-s">Get an EORI number that starts with GB to move your goods into or out of the EU</h3>
+          {{ govukInsetText({
+            text: "It takes up to a week"
+          }) }}
+          <p>You will not be able to buy goods from or sell goods to the EU without an EORI number.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">Get ready to move goods between or through common transit countries including the EU</a></p>
+        </article>
+
+
+        <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+        <article>
+          <h3 class="govuk-heading-s">If you buy chemicals from the EU, you will need to register on the new UK REACH system</h3>
+          {{ govukInsetText({
+            text: "It usually takes up to 6 weeks"
+          }) }}
+          <p>You risk not being able to bring chemicals into the UK if you do not register.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">How to comply with REACH chemical regulations</a></p>
+        </article>
+
+
+        <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+        <article>
+          <h3 class="govuk-heading-s">Check the rules on moving waste between the UK and the EU</h3>
+          <p>You risk your waste shipments being delayed or rejected if you do not follow the right rules.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">Importing and exporting waste from 2021</a></p>
+        </article>
+
+
+        <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+        <article>
+          <h3 class="govuk-heading-s">Check if you need a CITES permit when moving endangered animal or plant species between the UK and the EU</h3>
+          <p>You risk not being able to move animals or plants protected under CITES.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">Trading and moving endangered species protected by CITES</a></p>
+        </article>
+
+
+        <hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+        <article>
+          <h3 class="govuk-heading-s">Decide how you want to make customs declarations and whether you need to get someone to deal with customs for you</h3>
+          <p>You risk not being able to import or export goods if you do not get your business ready.</p>
+          <p class="govuk-body-s"><span class="govuk-break-line">More information:</span> <a class="govuk-link govuk-link--no-visited-state" href="#">Get someone to deal with customs for you</a></p>
+        </article>
+
+
+      </div>
+
+    </div>
 
   </div>
 
+</section>
+
+
+<hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--visible">
+
+
+<!-- Mailinglist -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">What you need to do may change</h2>
+    <p>Subscribe to updates about changes that may affect you and get a link to your results.</p>
+    {{ govukButton({
+      text: "Subscribe",
+      href: "#"
+    }) }}
+  </div>
 </div>
+
+
+<hr class="govuk-section-break  govuk-section-break--l  govuk-section-break--thick  govuk-section-break--brand  govuk-section-break--visible">
+
+
+<!-- Share your results -->
+<section>
+  <h4 class="govuk-heading-m">Share your results</h4>
+  <div class="govuk-social">
+    <ul class="govuk-social__list">
+      <li class="govuk-social__list-item">
+        <a class="govuk-social__link govuk-link govuk-link--no-visited-state" href="#" rel="noopener noreferrer external">
+          <span class="govuk-social__link-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M0,30h30V0H0V30z M20,8.75h-2.4c-0.77,0-1.35,0.32-1.35,1.11v1.39H20L19.7,15h-3.45v10H12.5V15H10v-3.75h2.5v-2.4C12.5,6.32,13.83,5,16.83,5H20V8.75z"/></svg></span>
+          <span class="govuk-social__link-text">Facebook</span>
+        </a>
+      </li>
+      <li class="govuk-social__list-item">
+        <a class="govuk-social__link govuk-link govuk-link--no-visited-state" href="#" rel="noopener noreferrer external">
+          <span class="govuk-social__link-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M0,30h30V0H0V30z M23.58,11.55c0.26,5.77-4.04,12.21-11.66,12.21c-2.32,0-4.47-0.68-6.29-1.84c2.18,0.26,4.35-0.35,6.07-1.7c-1.8-0.03-3.31-1.22-3.83-2.85c0.64,0.12,1.28,0.09,1.85-0.07c-1.98-0.4-3.34-2.17-3.29-4.08c0.55,0.31,1.18,0.49,1.86,0.51c-1.83-1.22-2.34-3.63-1.27-5.48c2.03,2.48,5.05,4.12,8.46,4.29c-0.6-2.57,1.35-5.04,4-5.04c1.18,0,2.25,0.5,2.99,1.3c0.93-0.18,1.82-0.52,2.61-0.99c-0.31,0.96-0.96,1.76-1.8,2.27c0.83-0.1,1.62-0.32,2.36-0.65C25.07,10.25,24.38,10.97,23.58,11.55z"/></svg></span>
+          <span class="govuk-social__link-text">Twitter</span>
+        </a>
+      </li>
+      <li class="govuk-social__list-item">
+        <a class="govuk-social__link govuk-link govuk-link--no-visited-state" href="#" rel="noopener noreferrer external">
+          <span class="govuk-social__link-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15.05,6.67c-4.54,0-8.24,3.69-8.24,8.24c0,1.85,0.54,3.24,1.46,4.69l-0.83,3.04l3.12-0.82c1.4,0.83,2.73,1.33,4.49,1.33c4.54,0,8.24-3.69,8.24-8.24C23.28,10.37,19.6,6.67,15.05,6.67z M19.89,18.45c-0.21,0.58-1.2,1.11-1.67,1.18c-0.43,0.06-0.97,0.09-1.56-0.1c-0.36-0.11-0.82-0.27-1.41-0.52c-2.48-1.07-4.11-3.57-4.23-3.74c-0.12-0.16-1.01-1.34-1.01-2.56s0.64-1.82,0.87-2.07c0.23-0.25,0.49-0.31,0.66-0.31l0.47,0.01c0.15,0.01,0.36-0.06,0.56,0.42c0.21,0.5,0.7,1.72,0.76,1.84c0.06,0.12,0.1,0.27,0.02,0.43c-0.08,0.17-0.12,0.27-0.25,0.41l-0.37,0.43c-0.12,0.12-0.25,0.26-0.11,0.51c0.15,0.25,0.64,1.06,1.38,1.71c0.95,0.84,1.74,1.1,1.99,1.23c0.25,0.12,0.39,0.1,0.53-0.06c0.15-0.17,0.62-0.72,0.78-0.97c0.17-0.25,0.33-0.21,0.56-0.12c0.23,0.08,1.44,0.68,1.69,0.81c0.25,0.12,0.41,0.19,0.48,0.29C20.1,17.38,20.1,17.87,19.89,18.45z M0,30h30V0H0V30z M15.04,24.83c-1.66,0-3.29-0.42-4.74-1.21L5.05,25l1.41-5.14c-0.87-1.5-1.32-3.21-1.32-4.95C5.13,9.44,9.58,5,15.04,5c2.65,0,5.14,1.03,7.01,2.91c1.87,1.87,2.9,4.36,2.9,7.01C24.95,20.38,20.5,24.83,15.04,24.83z"/></svg></span>
+          <span class="govuk-social__link-text">WhatsApp</span>
+        </a>
+      </li>
+      <li class="govuk-social__list-item">
+        <a class="govuk-social__link govuk-link govuk-link--no-visited-state" href="#" rel="noopener noreferrer external">
+          <span class="govuk-social__link-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M22.93,9.17L15,15.59L7.07,9.17H22.93z M23.33,10.99v9.85H6.67v-9.85L15,17.74L23.33,10.99z M25,7.5H5v15h20V7.5z M30,0v30H0V0H30z"/></svg></span>
+          <span class="govuk-social__link-text">Email</span>
+        </a>
+      </li>
+      <li class="govuk-social__list-item">
+        <a class="govuk-social__link govuk-link govuk-link--no-visited-state" href="#" rel="noopener noreferrer external">
+          <span class="govuk-social__link-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M0,0v30h30V0H0z M10,23.75H6.25V10H10V23.75z M8.12,8.41c-1.21,0-2.19-0.99-2.19-2.21c0-1.22,0.98-2.2,2.19-2.2s2.19,0.99,2.19,2.2C10.31,7.43,9.33,8.41,8.12,8.41z M25,23.75h-3.75v-7.01c0-4.21-5-3.89-5,0v7.01H12.5V10h3.75v2.21C18,8.97,25,8.73,25,15.3V23.75z"/></svg></span>
+          <span class="govuk-social__link-text">LinkedIn</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- Print your results -->
+<div class="govuk-print">
+  <a class="govuk-print__link govuk-link govuk-link govuk-link--no-visited-state" href="#" rel="alternate">
+    <span class="govuk-print__link-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18"><path d="M16,0H4v4h12V0z M17,9c-0.55,0-1-0.45-1-1s0.45-1,1-1s1,0.45,1,1S17.55,9,17,9z M14,16H6v-5h8V16z M17,5H3C1.34,5,0,6.34,0,8v6h4v4h12v-4h4V8C20,6.34,18.66,5,17,5z"/></svg></span>
+    <span class="govuk-print__link-text">Print your results</span>
+  </a>
+</div>
+
 {% endblock %}

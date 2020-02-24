@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+You do not need to take action now
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      },
+      {
+        text: "Transition period",
+        href: "/transition-check"
+      },
+      {
+        text: "Check how to get ready for new rules in 2021",
+        href: "/transition-check"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">You do not need to take action now</h1>
+
+    <p>Based on your responses, you do not need to take any action to prepare for new rules from 1 January 2021.</p>
+
+    <h2 class="govuk-heading-m">What you need to do may change</h2>
+
+    <p>Subscribe to updates about changes that may affect you.</p>
+
+    {{ govukButton({
+      classes: "govuk-!-margin-bottom-0",
+      text: "Subscribe",
+      href: "#"
+    }) }}
+
+  </div>
+
+</div>
+{% endblock %}

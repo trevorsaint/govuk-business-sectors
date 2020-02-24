@@ -1,0 +1,15 @@
+.govuk-print {
+    position: relative;
+    // margin-bottom: govuk-spacing(6);
+    margin-top: govuk-spacing(6);
+    padding-left: govuk-spacing(6);
+}
+
+.govuk-print__link-icon {
+    display: block;
+    height: 18px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20px;
+}

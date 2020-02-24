@@ -1,0 +1,23 @@
+.govuk-mailinglist {
+    @include govuk-responsive-margin(8, "bottom");
+    background-color: govuk-colour("light-grey");
+    padding: govuk-spacing(4);
+}
+
+
+.govuk-mailinglist__link {
+    @include govuk-font(19);
+    position: relative;
+    margin-left: 31px;
+}
+
+
+.govuk-mailinglist__link-icon {
+    margin-right: govuk-spacing(2);
+    display: block;
+    height: 18px;
+    left: -31px;
+    position: absolute;
+    top: 3px;
+    width: 21px;
+}

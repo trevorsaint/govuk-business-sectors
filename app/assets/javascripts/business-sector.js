@@ -73,8 +73,6 @@ Sector.prototype.onButtonClick = function(checkbox, e) {
   var button = e.target;
   var checkbox = button.getAttribute('aria-controls');
 
-  console.log(button)
-
   button.remove(); // Remove button
 
   if (checkbox) {

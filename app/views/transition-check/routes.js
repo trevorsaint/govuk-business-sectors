@@ -4,11 +4,22 @@ const router = express.Router();
 
 router.post('/transition-check/post', function(req, res) {
 
-  if (data["run-a-business"] == "yes" && data["import-export"]) {
-    res.redirect('/transition-check/results')
+  var data = req.session.data;
+
+  if (data != undefined) {
+
+    if (data["run-a-business"] == "yes" && data["import-export"]) {
+      res.redirect('/transition-check/results')
+    } else {
+      res.redirect('/transition-check/no-action');
+    }
+
   } else {
-    res.redirect('/transition-check/no-action');
+
+    res.end;
+
   }
+
 
 });
 

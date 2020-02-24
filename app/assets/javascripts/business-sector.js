@@ -99,7 +99,7 @@ Sector.prototype.addFacet = function(checkbox) {
 // Remove
 Sector.prototype.removeFacet = function(checkbox) {
   var value = checkbox.value;
-  var button = document.querySelector('[aria-controls=[' + value + ']');
+  var button = document.querySelector("button[aria-controls='" + value + "']");
   button.remove();
 };
 

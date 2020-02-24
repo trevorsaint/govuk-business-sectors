@@ -23,6 +23,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     var resultsList = document.querySelector(".autocomplete__menu")
+    var input = document.querySelector(".autocomplete__input")
+
+    input.addEventListener("blur", function() {
+      document.querySelector("#business-sectors__autocomplete").value = ""
+    })
 
     resultsList.addEventListener("click", function(e) {
       onAutocompleteSelectItem(e)
@@ -236,24 +241,39 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   function onAutocompleteSelectItem(e) {
+    // Make facet buttons visible if not already
     var multipleResultsList = document.querySelector(".govuk-business-sector__facets--is-visible")
     if (multipleResultsList == null) {
       document.querySelector(".govuk-business-sector__facets").classList += " govuk-business-sector__facets--is-visible"
     }
 
+    // Check facet button doesn't already exist
+    var checkButton = document.querySelector(".govuk-facets__button[aria-controls='" + e.target.textContent +  "']")
+    if (!checkButton) {
+      addNewFacetButton(e.target.textContent, e)
+    }
+
+    var checkbox = document.querySelector("input[value='" + e.target.textContent + "']")
+    if (checkbox) {
+      checkbox.checked = true; // Uncheck checkbox
+    }
+
+    setTimeout(function(){ document.querySelector("#business-sectors__autocomplete").value = "" }, 100);
+  }
+
+  function addNewFacetButton(text, e) {
+    // Add new facet button for selected item
     var multipleResultsList = document.querySelector(".govuk-business-sector__facets--is-visible")
 
     var button = document.createElement('button');
     button.classList.add('govuk-facets__button');
     button.setAttribute('type', 'button');
-    button.setAttribute('aria-label', 'Remove filter ' + e.target.textContent);
-    button.innerHTML = '<span class="govuk-facets__button-text">' + e.target.textContent + '</span><span class="govuk-facets__button-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15,13.6L13.6,15L10,11.4L6.4,15L5,13.6L8.6,10L5,6.4L6.4,5L10,8.6L13.6,5L15,6.4L11.4,10L15,13.6z M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z"/></svg></span>'
+    button.setAttribute('aria-controls', text);
+    button.setAttribute('aria-label', 'Remove filter ' + text);
+    button.innerHTML = '<span class="govuk-facets__button-text">' + text + '</span><span class="govuk-facets__button-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15,13.6L13.6,15L10,11.4L6.4,15L5,13.6L8.6,10L5,6.4L6.4,5L10,8.6L13.6,5L15,6.4L11.4,10L15,13.6z M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z"/></svg></span>'
     button.addEventListener('click', Sector.prototype.onButtonClick.bind(null, e));
 
     multipleResultsList.appendChild(button);
-
-    // No idea why this isn't clearing the input field as it works when I try it in the browser console...
-    document.querySelector("#business-sectors__autocomplete").value = ""
   }
 
   Modules.Autocomplete = Autocomplete

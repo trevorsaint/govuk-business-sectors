@@ -57,7 +57,7 @@ Sector.prototype.addFacetHTML = function(checkbox, button) {
 
   button.classList.add('govuk-facets__button');
   button.setAttribute('type', 'button');
-  button.setAttribute('aria-controls', checkbox.id);
+  button.setAttribute('aria-controls', checkbox.value);
   button.setAttribute('aria-label', 'Remove filter ' + checkbox.nextElementSibling.innerText);
   button.addEventListener('click', this.onButtonClick.bind(this, checkbox), false);
   button.innerHTML = '<span class="govuk-facets__button-text">' + checkbox.nextElementSibling.innerText + '</span><span class="govuk-facets__button-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15,13.6L13.6,15L10,11.4L6.4,15L5,13.6L8.6,10L5,6.4L6.4,5L10,8.6L13.6,5L15,6.4L11.4,10L15,13.6z M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z"/></svg></span>'
@@ -71,13 +71,21 @@ Sector.prototype.addFacetHTML = function(checkbox, button) {
 Sector.prototype.onButtonClick = function(checkbox, e) {
 
   var button = e.target;
-  var checkbox = button.getAttribute('aria-controls');
+  var checkboxValue = button.getAttribute('aria-controls');
 
   button.remove(); // Remove button
 
-  if (checkbox) {
-    document.getElementById(checkbox).checked = false; // Uncheck checkbox
-    this.initCheckboxes();
+  if (checkboxValue) {
+    var checkbox = document.querySelector("input[value='" + checkboxValue + "']")
+
+    if (checkbox) {
+      checkbox.checked = false; // Uncheck checkbox
+    }
+  }
+
+  var multipleResultsList = document.querySelector(".govuk-business-sector__facets button")
+  if (multipleResultsList == null) {
+    document.querySelector(".govuk-business-sector__facets").classList.remove("govuk-business-sector__facets--is-visible")
   }
 };
 
@@ -90,8 +98,8 @@ Sector.prototype.addFacet = function(checkbox) {
 
 // Remove
 Sector.prototype.removeFacet = function(checkbox) {
-  var id = checkbox.id;
-  var button = document.querySelector('[aria-controls=' + id + ']');
+  var value = checkbox.value;
+  var button = document.querySelector("button[aria-controls='" + value + "']");
   button.remove();
 };
 

@@ -3,7 +3,6 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-
   function Autocomplete () { }
 
   Autocomplete.prototype.start = function ($module) {
@@ -23,27 +22,27 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.initAutoCompleteInput($input)
     }
 
-    var resultsList = document.querySelector('.autocomplete__menu')
-    var input = document.querySelector('.autocomplete__input')
+    var resultsList = document.querySelector(".autocomplete__menu")
+    var input = document.querySelector(".autocomplete__input")
 
-    input.addEventListener('blur', function() {
-      setTimeout(function(){ input.value = ''; }, 100);
-    });
+    input.addEventListener("blur", function() {
+      setTimeout(function(){ input.value = ""; }, 100);
+    })
 
     input.addEventListener("focus", function() {
-      document.querySelector("#business-sectors__autocomplete").value = ''
-    });
+      document.querySelector("#business-sectors__autocomplete").value = ""
+    })
+
 
     resultsList.addEventListener("click", function(e) {
       onAutocompleteSelectItem(e)
-    });
+    })
 
     resultsList.addEventListener("keydown", function(e) {
       if (event.keyCode === 13) {
         onAutocompleteSelectItem(e)
       }
-    });
-
+    })
   }
 
   Autocomplete.prototype.initAutoCompleteContacts = function () {
@@ -53,8 +52,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       return
     }
 
-    new window.accessibleAutocomplete({
-      // eslint-disable-line no-new, new-cap
+    new window.accessibleAutocomplete({ // eslint-disable-line no-new, new-cap
       element: this.$module,
       id: $select.id,
       source: function (query, syncResults) {
@@ -95,9 +93,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         })
 
         if (options.length) {
-          options[0].selected = true // Mirror selection
+          options[0].selected = true // mirror selection
         } else {
-          $select.selectedIndex = -1 // No option selected
+          $select.selectedIndex = -1 // no option selected
         }
 
         if (previouslySelectedIndex !== $select.selectedIndex) {
@@ -205,8 +203,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       return
     }
 
-    new window.accessibleAutocomplete({
-      // eslint-disable-line no-new, new-cap
+    new window.accessibleAutocomplete({ // eslint-disable-line no-new, new-cap
       id: $input.id,
       name: $input.name,
       element: this.$module,
@@ -249,37 +246,29 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   function onAutocompleteSelectItem(e) {
-
     // Make facet buttons visible if not already
-    var multipleResultsList = document.querySelector('.filters__selected--is-visible');
-
+    var multipleResultsList = document.querySelector(".govuk-business-sector__facets--is-visible")
     if (multipleResultsList == null) {
-      document.querySelector('.filters__selected').classList += ' filters__selected--is-visible'
+      document.querySelector(".govuk-business-sector__facets").classList += " govuk-business-sector__facets--is-visible"
     }
 
     // Check facet button doesn't already exist
     var checkButton = document.querySelector(".govuk-facets__button[aria-controls='" + e.target.textContent +  "']")
-
     if (!checkButton) {
       addNewFacetButton(e.target.textContent, e)
     }
 
     var checkbox = document.querySelector("input[value='" + e.target.textContent + "']")
-
     if (checkbox) {
       checkbox.checked = true; // Uncheck checkbox
     }
 
-    setTimeout(function() {
-      document.querySelector('#business-sectors__autocomplete').value = ''; document.querySelector("#business-sectors__autocomplete").blur()
-    }, 100);
-
+    setTimeout(function(){ document.querySelector("#business-sectors__autocomplete").value = ""; document.querySelector("#business-sectors__autocomplete").blur() }, 100);
   }
 
   function addNewFacetButton(text, e) {
-
     // Add new facet button for selected item
-    var multipleResultsList = document.querySelector('.filters__selected--is-visible .filters__selected-content')
+    var multipleResultsList = document.querySelector(".govuk-business-sector__facets--is-visible")
 
     var button = document.createElement('button');
     button.classList.add('govuk-facets__button');
@@ -288,12 +277,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     button.setAttribute('aria-label', 'Remove filter ' + text);
     button.innerHTML = '<span class="govuk-facets__button-text">' + text + '</span><span class="govuk-facets__button-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15,13.6L13.6,15L10,11.4L6.4,15L5,13.6L8.6,10L5,6.4L6.4,5L10,8.6L13.6,5L15,6.4L11.4,10L15,13.6z M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z"/></svg></span>'
     button.addEventListener('click', Sector.prototype.onButtonClick.bind(null, e));
+
     multipleResultsList.appendChild(button);
-
-    checkQuantity();
-
   }
 
   Modules.Autocomplete = Autocomplete
-
 })(window.GOVUK.Modules)
+

@@ -18,290 +18,919 @@ What does your business or organisation do?
 
     <h1 class="govuk-heading-xl govuk-!-margin-bottom-3"><span class="govuk-caption-xl">About your business </span>What does your business or organisation do?</h1>
 
-    <form method="post" action="/transition-check/post">
+    <div class="govuk-business-sector" id="business-sector">
 
-      <div class="govuk-business-sector">
+      <form method="post" action="/transition-check/post">
 
-        <div id="business-sectors__autocomplete-wrapper" class="govuk-body">
-          {% include "includes/autocomplete.html" %}
+        <button class="filters__toggle govuk-button govuk-button--secondary" type="button" aria-controls="filters">Show filter</button>
+
+        <div class="filters" id="filters">
+
+          <div class="filters__heading">
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-0">Filters</h2>
+            <button class="filters__close" type="button">
+              <span class="filters__close-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.3,7.1L13.4,12l4.9,4.9c0.4,0.4,0.4,1,0,1.4c-0.4,0.4-1,0.4-1.4,0L12,13.4l-4.9,4.9c-0.4,0.4-1,0.4-1.4,0c-0.4-0.4-0.4-1,0-1.4l4.9-4.9L5.7,7.1c-0.4-0.4-0.4-1,0-1.4c0.4-0.4,1-0.4,1.4,0l4.9,4.9l4.9-4.9c0.4-0.4,1-0.4,1.4,0C18.7,6.1,18.7,6.7,18.3,7.1z"/></svg></span>
+              <span class="filters__close-label">Close</span>
+            </button>
+          </div>
+
+          <div class="filters__selected" id="facets" aria-live="assertive">
+            <h3 class="govuk-heading-m">Selected filters</h3>
+            <div class="filters__selected-content" data-module="autocomplete-multiple-results"></div>
+          </div>
+
+          <div class="filters__content">
+
+            <ul class="accordion js-accordion">
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Agriculture Forestry and Fishing</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                  {{ govukCheckboxes({
+                    idPrefix: "agriculture",
+                    name: "agriculture",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Agriculture Forestry and Fishing",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Growing of cereals (except rice), leguminous crops and oil seeds",
+                        text: "Growing of cereals (except rice), leguminous crops and oil seeds"
+                      },
+                      {
+                        value: "Growing of rice",
+                        text: "Growing of rice"
+                      },
+                      {
+                        value: "Growing of vegetables and melons, roots and tubers",
+                        text: "Growing of vegetables and melons, roots and tubers"
+                      },
+                      {
+                        value: "Growing of sugar cane",
+                        text: "Growing of sugar cane"
+                      },
+                      {
+                        value: "Growing of tobacco",
+                        text: "Growing of tobacco"
+                      },
+                      {
+                        value: "Growing of fibre crops",
+                        text: "Growing of fibre crops"
+                      },
+                      {
+                        value: "Growing of other non-perennial crops",
+                        text: "Growing of other non-perennial crops"
+                      },
+                      {
+                        value: "Growing of grapes",
+                        text: "Growing of grapes"
+                      },
+                      {
+                        value: "Growing of tropical and subtropical fruits",
+                        text: "Growing of tropical and subtropical fruits"
+                      },
+                      {
+                        value: "Growing of citrus fruits",
+                        text: "Growing of citrus fruits"
+                      },
+                      {
+                        value: "Growing of pome fruits and stone fruits",
+                        text: "Growing of pome fruits and stone fruits"
+                      },
+                      {
+                        value: "Growing of other tree and bush fruits and nuts",
+                        text: "Growing of other tree and bush fruits and nuts"
+                      },
+                      {
+                        value: "Growing of oleaginous fruits",
+                        text: "Growing of oleaginous fruits"
+                      },
+                      {
+                        value: "Growing of beverage crops",
+                        text: "Growing of beverage crops"
+                      },
+                      {
+                        value: "Growing of spices, aromatic, drug and pharmaceutical crops",
+                        text: "Growing of spices, aromatic, drug and pharmaceutical crops"
+                      },
+                      {
+                        value: "Growing of other perennial crops",
+                        text: "Growing of other perennial crops"
+                      },
+                      {
+                        value: "Plant propagation",
+                        text: "Plant propagation"
+                      },
+                      {
+                        value: "Raising of dairy cattle",
+                        text: "Raising of dairy cattle"
+                      },
+                      {
+                        value: "Raising of other cattle and buffaloes",
+                        text: "Raising of other cattle and buffaloes"
+                      },
+                      {
+                        value: "Raising of horses and other equines",
+                        text: "Raising of horses and other equines"
+                      },
+                      {
+                        value: "Raising of camels and camelids",
+                        text: "Raising of camels and camelids"
+                      },
+                      {
+                        value: "Raising of sheep and goats",
+                        text: "Raising of sheep and goats"
+                      },
+                      {
+                        value: "Raising of swine/pigs",
+                        text: "Raising of swine/pigs"
+                      },
+                      {
+                        value: "Raising of poultry",
+                        text: "Raising of poultry"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Mining and Quarrying</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                  {{ govukCheckboxes({
+                    idPrefix: "mining",
+                    name: "mining",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Mining and Quarrying",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Deep coal mines",
+                        text: "Deep coal mines"
+                      },
+                      {
+                        value: "Open cast coal working",
+                        text: "Open cast coal working"
+                      },
+                      {
+                        value: "Mining of lignite",
+                        text: "Mining of lignite"
+                      },
+                      {
+                        value: "Extraction of crude petroleum",
+                        text: "Extraction of crude petroleum"
+                      },
+                      {
+                        value: "Extraction of natural gas",
+                        text: "Extraction of natural gas"
+                      },
+                      {
+                        value: "Mining of iron ores",
+                        text: "Mining of iron ores"
+                      },
+                      {
+                        value: "Mining of uranium and thorium ores",
+                        text: "Mining of uranium and thorium ores"
+                      },
+                      {
+                        value: "Mining of other non-ferrous metal ores",
+                        text: "Mining of other non-ferrous metal ores"
+                      },
+                      {
+                        value: "Quarrying of ornamental and building stone, limestone, gypsum, chalk",
+                        text: "Quarrying of ornamental and building stone, limestone, gypsum, chalk"
+                      },
+                      {
+                        value: "Operation of gravel and sand pits; mining of clays and kaolin",
+                        text: "Operation of gravel and sand pits; mining of clays and kaolin"
+                      },
+                      {
+                        value: "Mining of chemical and fertilizer minerals",
+                        text: "Mining of chemical and fertilizer minerals"
+                      },
+                      {
+                        value: "Extraction of peat",
+                        text: "Extraction of peat"
+                      },
+                      {
+                        value: "Extraction of salt",
+                        text: "Extraction of salt"
+                      },
+                      {
+                        value: "Other mining and quarrying n.e.c.",
+                        text: "Other mining and quarrying n.e.c."
+                      },
+                      {
+                        value: "Support activities for petroleum and natural gas mining",
+                        text: "Support activities for petroleum and natural gas mining"
+                      },
+                      {
+                        value: "Support activities for other mining and quarrying",
+                        text: "Support activities for other mining and quarrying"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Manufacturing</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                  {{ govukCheckboxes({
+                    idPrefix: "manufacturing",
+                    name: "manufacturing",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Manufacturing",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Processing and preserving of meat",
+                        text: "Processing and preserving of meat"
+                      },
+                      {
+                        value: "Processing and preserving of poultry meat",
+                        text: "Processing and preserving of poultry meat"
+                      },
+                      {
+                        value: "Production of meat and poultry meat products",
+                        text: "Production of meat and poultry meat products"
+                      },
+                      {
+                        value: "Processing and preserving of fish, crustaceans and molluscs",
+                        text: "Processing and preserving of fish, crustaceans and molluscs"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Electricity, gas, steam and air conditioning supply</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "electricity",
+                    name: "electricity",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Electricity, gas, steam and air conditioning supply",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Production of electricity",
+                        text: "Production of electricity"
+                      },
+                      {
+                        value: "Transmission of electricity",
+                        text: "Transmission of electricity"
+                      },
+                      {
+                        value: "Distribution of electricity",
+                        text: "Distribution of electricity"
+                      },
+                      {
+                        value: "Trade of electricity",
+                        text: "Trade of electricity"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Water supply, sewerage, waste management and remediation activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "water-supply",
+                    name: "water-supply",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Water supply, sewerage, waste management and remediation activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Water supply 1",
+                        text: "Water supply 1"
+                      },
+                      {
+                        value: "Water supply 2",
+                        text: "Water supply 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Construction</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "construction",
+                    name: "construction",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Construction",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Construction 1",
+                        text: "Construction 1"
+                      },
+                      {
+                        value: "Construction 2",
+                        text: "Construction 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Wholesale and retail trade; repair of motor vehicles and motorcycles</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "wholesale",
+                    name: "wholesale",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Wholesale and retail trade; repair of motor vehicles and motorcycles",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Wholesale 1",
+                        text: "Wholesale 1"
+                      },
+                      {
+                        value: "Wholesale 2",
+                        text: "Wholesale 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Transportation and storage</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "transportation",
+                    name: "transportation",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Transportation and storage",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Transportation 1",
+                        text: "Transportation 1"
+                      },
+                      {
+                        value: "Transportation 2",
+                        text: "Transportation 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Accommodation and food service activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "accomodation",
+                    name: "accomodation",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Accommodation and food service activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Accomodation 1",
+                        text: "Accomodation 1"
+                      },
+                      {
+                        value: "Accomodation 2",
+                        text: "Accomodation 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Information and communication</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "information",
+                    name: "information",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Information and communication",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Information 1",
+                        text: "Information 1"
+                      },
+                      {
+                        value: "Information 2",
+                        text: "Information 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Financial and insurance activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "financial",
+                    name: "financial",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Financial and insurance activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Financial 1",
+                        text: "Financial 1"
+                      },
+                      {
+                        value: "Financial 2",
+                        text: "Financial 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Real estate activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "financial",
+                    name: "financial",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Real estate activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Real estate 1",
+                        text: "Real estate 1"
+                      },
+                      {
+                        value: "Real estate 2",
+                        text: "Real estate 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Professional, scientific and technical activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "professional",
+                    name: "professional",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Professional, scientific and technical activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Professional 1",
+                        text: "Professional 1"
+                      },
+                      {
+                        value: "Professional 2",
+                        text: "Professional 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Administrative and support service activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "administrative",
+                    name: "administrative",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Administrative and support service activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Administrative 1",
+                        text: "Administrative 1"
+                      },
+                      {
+                        value: "Administrative 2",
+                        text: "Administrative 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Public administration and defence; compulsory social security</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "public-administration",
+                    name: "public-administration",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Public administration and defence; compulsory social security",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Public administration 1",
+                        text: "Public administration 1"
+                      },
+                      {
+                        value: "Public administration 2",
+                        text: "Public administration 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Education</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "education",
+                    name: "education",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Education",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Education 1",
+                        text: "Education 1"
+                      },
+                      {
+                        value: "Education 2",
+                        text: "Education 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Human health and social work activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "human-health",
+                    name: "human-health",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Human health and social work activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Human health 1",
+                        text: "Human health 1"
+                      },
+                      {
+                        value: "Human health 2",
+                        text: "Human health 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Arts, entertainment and recreation</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "arts",
+                    name: "arts",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Arts, entertainment and recreation",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Arts 1",
+                        text: "Arts 1"
+                      },
+                      {
+                        value: "Arts 2",
+                        text: "Arts 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+              <li class="accordion__item js-accordion__item">
+
+                <button class="accordion__header" type="button">
+                  <span class="accordion__header-icon" aria-hidden="true"></span>
+                  <span class="accordion__header-title">Other service activities</span>
+                </button>
+
+                <div class="accordion__panel js-accordion__panel">
+                {{ govukCheckboxes({
+                    idPrefix: "other",
+                    name: "other",
+                    classes: "js-checkbox govuk-checkboxes--small",
+                    formGroup: {
+                      classes: "govuk-!-margin-bottom-2"
+                    },
+                    fieldset: {
+                      legend: {
+                        text: "Other service activities",
+                        isPageHeading: false,
+                        classes: "govuk-visually-hidden"
+                      }
+                    },
+                    items: [
+                      {
+                        value: "Other 1",
+                        text: "Other 1"
+                      },
+                      {
+                        value: "Other 2",
+                        text: "Other 2"
+                      }
+                    ]
+                  }) }}
+                </div>
+
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div class="filters__action">
+            {{ govukButton({
+              classes: "govuk-!-margin-0",
+              text: "Continue"
+            }) }}
+          </div>
+
         </div>
 
-        <div class="govuk-business-sector__facets" id="facets" aria-live="assertive" data-module="autocomplete-multiple-results"></div>
+        <div class="govuk-body" id="business-sectors__autocomplete-wrapper">
+          {% include "includes/autocomplete.html" %}
+        </div>
 
         {{ govukButton({
           classes: "govuk-!-margin-right-0",
           text: "Continue"
         }) }}
 
-        {% set fullListHTML %}
+      </form>
 
-          <!-- Agriculture Forestry and Fishing -->
-          {{ govukCheckboxes({
-            idPrefix: "agriculture",
-            name: "agriculture",
-            classes: "js-checkbox govuk-checkboxes--small",
-            fieldset: {
-              legend: {
-                text: "Agriculture Forestry and Fishing",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "Growing of cereals (except rice), leguminous crops and oil seeds",
-                text: "Growing of cereals (except rice), leguminous crops and oil seeds"
-              },
-              {
-                value: "Growing of rice",
-                text: "Growing of rice"
-              },
-              {
-                value: "Growing of vegetables and melons, roots and tubers",
-                text: "Growing of vegetables and melons, roots and tubers"
-              },
-              {
-                value: "Growing of sugar cane",
-                text: "Growing of sugar cane"
-              },
-              {
-                value: "Growing of tobacco",
-                text: "Growing of tobacco"
-              },
-              {
-                value: "Growing of fibre crops",
-                text: "Growing of fibre crops"
-              },
-              {
-                value: "Growing of other non-perennial crops",
-                text: "Growing of other non-perennial crops"
-              },
-              {
-                value: "Growing of grapes",
-                text: "Growing of grapes"
-              },
-              {
-                value: "Growing of tropical and subtropical fruits",
-                text: "Growing of tropical and subtropical fruits"
-              },
-              {
-                value: "Growing of citrus fruits",
-                text: "Growing of citrus fruits"
-              },
-              {
-                value: "Growing of pome fruits and stone fruits",
-                text: "Growing of pome fruits and stone fruits"
-              },
-              {
-                value: "Growing of other tree and bush fruits and nuts",
-                text: "Growing of other tree and bush fruits and nuts"
-              },
-              {
-                value: "Growing of oleaginous fruits",
-                text: "Growing of oleaginous fruits"
-              },
-              {
-                value: "Growing of beverage crops",
-                text: "Growing of beverage crops"
-              },
-              {
-                value: "Growing of spices, aromatic, drug and pharmaceutical crops",
-                text: "Growing of spices, aromatic, drug and pharmaceutical crops"
-              },
-              {
-                value: "Growing of other perennial crops",
-                text: "Growing of other perennial crops"
-              },
-              {
-                value: "Plant propagation",
-                text: "Plant propagation"
-              },
-              {
-                value: "Raising of dairy cattle",
-                text: "Raising of dairy cattle"
-              },
-              {
-                value: "Raising of other cattle and buffaloes",
-                text: "Raising of other cattle and buffaloes"
-              },
-              {
-                value: "Raising of horses and other equines",
-                text: "Raising of horses and other equines"
-              },
-              {
-                value: "Raising of camels and camelids",
-                text: "Raising of camels and camelids"
-              },
-              {
-                value: "Raising of sheep and goats",
-                text: "Raising of sheep and goats"
-              },
-              {
-                value: "Raising of swine/pigs",
-                text: "Raising of swine/pigs"
-              },
-              {
-                value: "Raising of poultry",
-                text: "Raising of poultry"
-              }
-            ]
-          }) }}
-
-          <!-- Mining and Quarrying -->
-          {{ govukCheckboxes({
-            idPrefix: "mining",
-            name: "mining",
-            classes: "js-checkbox govuk-checkboxes--small",
-            fieldset: {
-              legend: {
-                text: "Mining and Quarrying",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "Deep coal mines",
-                text: "Deep coal mines"
-              },
-              {
-                value: "Open cast coal working",
-                text: "Open cast coal working"
-              },
-              {
-                value: "Mining of lignite",
-                text: "Mining of lignite"
-              },
-              {
-                value: "Extraction of crude petroleum",
-                text: "Extraction of crude petroleum"
-              },
-              {
-                value: "Extraction of natural gas",
-                text: "Extraction of natural gas"
-              },
-              {
-                value: "Mining of iron ores",
-                text: "Mining of iron ores"
-              },
-              {
-                value: "Mining of uranium and thorium ores",
-                text: "Mining of uranium and thorium ores"
-              },
-              {
-                value: "Mining of other non-ferrous metal ores",
-                text: "Mining of other non-ferrous metal ores"
-              },
-              {
-                value: "Quarrying of ornamental and building stone, limestone, gypsum, chalk",
-                text: "Quarrying of ornamental and building stone, limestone, gypsum, chalk"
-              },
-              {
-                value: "Operation of gravel and sand pits; mining of clays and kaolin",
-                text: "Operation of gravel and sand pits; mining of clays and kaolin"
-              },
-              {
-                value: "Mining of chemical and fertilizer minerals",
-                text: "Mining of chemical and fertilizer minerals"
-              },
-              {
-                value: "Extraction of peat",
-                text: "Extraction of peat"
-              },
-              {
-                value: "Extraction of salt",
-                text: "Extraction of salt"
-              },
-              {
-                value: "Other mining and quarrying n.e.c.",
-                text: "Other mining and quarrying n.e.c."
-              },
-              {
-                value: "Support activities for petroleum and natural gas mining",
-                text: "Support activities for petroleum and natural gas mining"
-              },
-              {
-                value: "Support activities for other mining and quarrying",
-                text: "Support activities for other mining and quarrying"
-              }
-            ]
-          }) }}
-
-          <!-- Manufacturing -->
-          {{ govukCheckboxes({
-            idPrefix: "manufacturing",
-            name: "manufacturing",
-            classes: "js-checkbox govuk-checkboxes--small",
-            fieldset: {
-              legend: {
-                text: "Manufacturing",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "Processing and preserving of meat",
-                text: "Processing and preserving of meat"
-              },
-              {
-                value: "Processing and preserving of poultry meat",
-                text: "Processing and preserving of poultry meat"
-              },
-              {
-                value: "Production of meat and poultry meat products",
-                text: "Production of meat and poultry meat products"
-              },
-              {
-                value: "Processing and preserving of fish, crustaceans and molluscs",
-                text: "Processing and preserving of fish, crustaceans and molluscs"
-              }
-            ]
-          }) }}
-
-          <!-- Electricity, gas, steam and air conditioning supply -->
-          {{ govukCheckboxes({
-            idPrefix: "electricity",
-            name: "electricity",
-            classes: "js-checkbox govuk-checkboxes--small",
-            fieldset: {
-              legend: {
-                text: "Electricity, gas, steam and air conditioning supply",
-                isPageHeading: false,
-                classes: "govuk-fieldset__legend--m"
-              }
-            },
-            items: [
-              {
-                value: "Production of electricity",
-                text: "Production of electricity"
-              },
-              {
-                value: "Transmission of electricity",
-                text: "Transmission of electricity"
-              },
-              {
-                value: "Distribution of electricity",
-                text: "Distribution of electricity"
-              },
-              {
-                value: "Trade of electricity",
-                text: "Trade of electricity"
-              }
-            ]
-          }) }}
-
-        {% endset %}
-
-        {{ govukDetails({
-          classes: "govuk-!-margin-bottom-0",
-          summaryText: "Show full list",
-          html: fullListHTML
-        }) }}
-
-      </div>
-
-    </form>
+    </div>
 
   </div>
 
@@ -315,13 +944,9 @@ What does your business or organisation do?
 <script src="/public/javascripts/autocomplete.js"></script>
 
 <script>
-
-  // Sectors
   var sector = document.querySelectorAll('.govuk-business-sector');
   sector.forEach(function(sector) {
     new Sector({container: sector});
   });
-
 </script>
-
 {% endblock %}

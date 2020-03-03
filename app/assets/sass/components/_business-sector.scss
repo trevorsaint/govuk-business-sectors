@@ -1,25 +1,202 @@
-.govuk-business-sector {
-  display: none;
-
-  .js-enabled & {
-    display: block;
-   }
-
+// ============================================
+// Reset
+// ============================================
+@mixin reset {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  color: inherit;
+  line-height: inherit;
+  appearance: none;
 }
 
 
-.govuk-business-sector__facets {
+// ============================================
+// Filters
+// ============================================
+.filters {
+  background-color: govuk-colour("white");
   display: none;
+  position: fixed;
+  left: 0; right: 0; bottom: 0; top: 0;
+  z-index: 9;
 
-  &--is-visible {
-    border-bottom: 1px solid govuk-colour("black");
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: govuk-spacing(5); // 25px
-    padding-bottom: govuk-spacing(5);
+  &[aria-hidden="false"] {
+    display: block;
   }
 
 }
+
+
+// Close button
+.filters__close {
+  @include reset;
+  @include govuk-font(19, $weight: bold);
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+
+  &:focus {
+    background-color: govuk-colour("yellow");
+    box-shadow: 0 -2px govuk-colour("yellow"), 0 4px govuk-colour("black");
+    color: govuk-colour("black");
+    outline: 3px solid transparent;
+    text-decoration: none;
+  }
+
+}
+
+.filters__close-icon {
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+}
+
+
+.filters__heading {
+  align-items: center;
+  border-bottom: 1px solid govuk-colour("mid-grey");
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+
+.filters__selected {
+  border-bottom: 1px solid govuk-colour("mid-grey");
+  display: none;
+  padding: 15px;
+  padding-bottom: 10px;
+
+  &--is-visible {
+    display: block;
+  }
+
+}
+
+
+.filters__selected-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.filters__content {
+  padding: 0 15px;
+  overflow-y: scroll;
+  height: calc(100% - 124px); // Heading and actions
+}
+
+
+.filters__action {
+  box-sizing: border-box;
+  background-color: govuk-colour("white");
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 0 5px 0 rgba(govuk-colour("black"),0.50), 0 -1px 0 0 rgba(govuk-colour("mid-grey"),0.50);
+}
+
+
+
+// ============================================
+// Accordion
+// ============================================
+.accordion {
+  @include reset;
+  margin: 0;
+}
+
+
+.accordion__item {
+  border: 0px solid govuk-colour("mid-grey");
+  border-bottom-width: 1px;
+  list-style: none;
+
+  &:last-child {
+    border: 0;
+  }
+
+}
+
+
+// Accordion button
+.accordion__header {
+  @include reset;
+  @include govuk-font(19, $weight: bold);
+  align-items: center;
+  border: 0;
+  cursor: pointer;
+  color: govuk-colour("blue");
+  display: flex;
+  outline: none;
+  padding: 15px 0;
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+
+    .accordion__header-title {
+      color: govuk-colour("dark-blue");
+      text-decoration: underline;
+    }
+
+  }
+
+  &:focus {
+
+    .accordion__header-title {
+      background-color: govuk-colour("yellow");
+      outline: 3px solid transparent;
+      color: govuk-colour("black");
+      box-shadow: 0 -2px govuk-colour("yellow"), 0 4px govuk-colour("black");
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+
+.accordion__header-icon {
+  background-image: url('../images/accordion-arrow.svg');
+  background-size: 24px 24px;
+  flex-shrink: 0;
+  margin-right: 10px;
+  height: 24px;
+  width: 24px;
+}
+
+
+.accordion__panel {
+  padding-left: 34px;
+}
+
+
+.js-enabled {
+
+  .accordion__panel {
+    display: none;
+  }
+
+  .accordion__item--is-open > .accordion__panel {
+    display: block;
+  }
+
+  .accordion__item--is-open .accordion__header-icon {
+    transform: rotate(180deg);
+  }
+
+}
+
+
+.govuk-template {
+  overflow-y: hidden;
+}
+
 
 .govuk-facets__button {
   @include govuk-font(16);
@@ -29,8 +206,8 @@
   border-radius: 20px;
   cursor: pointer;
   display: flex;
-  margin-right: govuk-spacing(2);
-  margin-bottom: govuk-spacing(2);
+  margin-right: govuk-spacing(1);
+  margin-bottom: govuk-spacing(1);
   padding-bottom: govuk-spacing(2) - 1px;
   padding-left: govuk-spacing(3) - 1px;
   padding-right: govuk-spacing(2) - 1px;

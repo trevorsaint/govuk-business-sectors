@@ -260,7 +260,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var checkButton = document.querySelector(".govuk-facets__button[aria-controls='" + e.target.textContent +  "']")
 
     if (!checkButton) {
-      addNewFacetButton(e.target.textContent, e)
+
+      var targetContent = e.target.childNodes[0].nodeValue; // Remove span tag (causing issue in IOS devices)
+
+      //addNewFacetButton(e.target.textContent, e);
+      addNewFacetButton(targetContent, e);
+
     }
 
     var checkbox = document.querySelector("input[value='" + e.target.textContent + "']")

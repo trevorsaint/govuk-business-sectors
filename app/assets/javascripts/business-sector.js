@@ -144,11 +144,11 @@ function checkQuantity() {
 
   if (facet >= 1) {
     toggleButton.textContent = 'Show selections (' + facet + ')';
-    continueButton.textContent = 'Continue (' + facet + ' selected)';
+    continueButton.textContent = 'Done (' + facet + ' selected)';
     toggleButton.classList.add('filters__toggle--is-visible');
   } else {
     toggleButton.textContent = 'Show selections';
-    continueButton.textContent = 'Continue';
+    continueButton.textContent = 'Done';
     toggleButton.classList.remove('filters__toggle--is-visible');
   }
 

@@ -27,7 +27,7 @@ What does your business or organisation do?
         <div class="filters" id="filters">
 
           <div class="filters__heading">
-            <h2 class="govuk-heading-l govuk-!-margin-bottom-0">Filters</h2>
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-0 govuk-visually-hidden">Filters</h2>
             <button class="filters__close" type="button">
               <span class="filters__close-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.3,7.1L13.4,12l4.9,4.9c0.4,0.4,0.4,1,0,1.4c-0.4,0.4-1,0.4-1.4,0L12,13.4l-4.9,4.9c-0.4,0.4-1,0.4-1.4,0c-0.4-0.4-0.4-1,0-1.4l4.9-4.9L5.7,7.1c-0.4-0.4-0.4-1,0-1.4c0.4-0.4,1-0.4,1.4,0l4.9,4.9l4.9-4.9c0.4-0.4,1-0.4,1.4,0C18.7,6.1,18.7,6.7,18.3,7.1z"/></svg></span>
               <span class="filters__close-label">Close</span>
@@ -37,7 +37,7 @@ What does your business or organisation do?
           <div class="filters__content">
 
             <div class="filters__selected" id="facets" aria-live="assertive">
-              <h3 class="govuk-heading-m">Selected filters</h3>
+              <h3 class="govuk-heading-m">Your selections</h3>
               <div class="filters__selected-content" data-module="autocomplete-multiple-results"></div>
             </div>
 
@@ -914,7 +914,7 @@ What does your business or organisation do?
             {{ govukButton({
               classes: "filters__continue govuk-!-margin-0",
               type: "button",
-              text: "Continue"
+              text: "Done"
             }) }}
           </div>
 

@@ -182,7 +182,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     new window.accessibleAutocomplete.enhanceSelectElement({ // eslint-disable-line no-new, new-cap
       selectElement: $select,
       displayMenu: 'overlay',
-      showAllValues: true,
       minLength: 3,
       confirmOnBlur: false,
       showNoOptionsFound: true

@@ -64,6 +64,7 @@ Util.getIndexInArray = function(array, el) {
     this.filter = document.getElementsByClassName('filters')[0];
     this.trigger = document.querySelectorAll('[aria-controls="' + this.element.getAttribute('id') + '"]')[0];
     this.close = this.element.getElementsByClassName('filters__close')[0];
+    this.continue = this.element.getElementsByClassName('filters__continue')[0];
     this.selectedTrigger = false;
     initFilter(this);
   };
@@ -77,6 +78,7 @@ Util.getIndexInArray = function(array, el) {
     // Event listeners
     filter.trigger.addEventListener('click', function() {toggleFilter(filter)});
     filter.close.addEventListener('click', function() {toggleFilter(filter)});
+    filter.continue.addEventListener('click', function() {toggleFilter(filter)});
     window.addEventListener('keyup', function() {onKeyUp(filter)});
 
   };
@@ -89,8 +91,10 @@ Util.getIndexInArray = function(array, el) {
 
     if(status == 'close') {
       filter.element.setAttribute('aria-hidden', 'false');
+      filter.html.classList.add('govuk-template--no-scroll');
     } else {
       filter.element.setAttribute('aria-hidden', 'true');
+      filter.html.classList.remove('govuk-template--no-scroll');
     }
 
   };

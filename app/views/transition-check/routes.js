@@ -9,7 +9,7 @@ router.post('/transition-check/post', function(req, res) {
 
   if (data != undefined) {
 
-    if (data["run-a-business"] == "yes" && data["import-export"]) {
+    if (data["run-a-business"] == "yes") {
       res.redirect("/transition-check/results");
     } else {
       res.redirect("/transition-check/no-action");

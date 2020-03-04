@@ -34,12 +34,12 @@ What does your business or organisation do?
             </button>
           </div>
 
-          <div class="filters__selected" id="facets" aria-live="assertive">
-            <h3 class="govuk-heading-m">Selected filters</h3>
-            <div class="filters__selected-content" data-module="autocomplete-multiple-results"></div>
-          </div>
-
           <div class="filters__content">
+
+            <div class="filters__selected" id="facets" aria-live="assertive">
+              <h3 class="govuk-heading-m">Selected filters</h3>
+              <div class="filters__selected-content" data-module="autocomplete-multiple-results"></div>
+            </div>
 
             <ul class="accordion js-accordion">
 
@@ -912,7 +912,8 @@ What does your business or organisation do?
 
           <div class="filters__action">
             {{ govukButton({
-              classes: "govuk-!-margin-0",
+              classes: "filters__continue govuk-!-margin-0",
+              type: "button",
               text: "Continue"
             }) }}
           </div>

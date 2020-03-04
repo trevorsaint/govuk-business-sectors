@@ -78,13 +78,10 @@
 {% endblock %}
 
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
   {{ govukHeader({
     homepageUrl: "/"
   }) }}
 {% endblock %}
-
-{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing  govuk-main-wrapper--negative-shift") %}
 
 
 {% if useAutoStoreData %}

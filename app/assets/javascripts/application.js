@@ -7,7 +7,4 @@ if (window.console && window.console.info) {
 
 $(document).ready(function () {
   window.GOVUKFrontend.initAll()
-
-  element = document.querySelector("#business-sectors__autocomplete-wrapper")
-  window.GOVUK.Modules.Autocomplete.prototype.start(element)
-})
+});

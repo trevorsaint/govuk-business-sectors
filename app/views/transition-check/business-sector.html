@@ -949,9 +949,16 @@ What does your business or organisation do?
 <script src="/public/javascripts/autocomplete.js"></script>
 
 <script>
+
+  $(document).ready(function () {
+    element = document.querySelector("#business-sectors__autocomplete-wrapper")
+    window.GOVUK.Modules.Autocomplete.prototype.start(element)
+  });
+
   var sector = document.querySelectorAll('.govuk-business-sector');
   sector.forEach(function(sector) {
     new Sector({container: sector});
   });
+
 </script>
 {% endblock %}

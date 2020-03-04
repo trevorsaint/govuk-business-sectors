@@ -27,8 +27,45 @@
   top: 0;
   z-index: 9;
 
+  @include govuk-media-query($from: tablet) {
+    padding-top: 70px;
+  }
+
   &[aria-hidden="false"] {
     display: block;
+  }
+
+}
+
+
+.filters__toggle {
+  display: none;
+
+  &--is-visible {
+    display: block;
+  }
+
+}
+
+
+
+.filters__showlist {
+  @include reset;
+  @include govuk-font(19, $weight: normal);
+  color: govuk-colour("blue");
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: govuk-colour("dark-blue");
+  }
+
+  &:focus {
+    background-color: govuk-colour("yellow");
+    box-shadow: 0 -2px govuk-colour("yellow"), 0 4px govuk-colour("black");
+    color: govuk-colour("black");
+    outline: 3px solid transparent;
+    text-decoration: none;
   }
 
 }

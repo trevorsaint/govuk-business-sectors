@@ -63,6 +63,7 @@ Util.getIndexInArray = function(array, el) {
     this.html = document.getElementsByTagName('html')[0];
     this.filter = document.getElementsByClassName('filters')[0];
     this.trigger = document.querySelectorAll('[aria-controls="' + this.element.getAttribute('id') + '"]')[0];
+    this.fulllist = document.querySelectorAll('.filters__showlist')[0];
     this.close = this.element.getElementsByClassName('filters__close')[0];
     this.continue = this.element.getElementsByClassName('filters__continue')[0];
     this.selectedTrigger = false;
@@ -77,6 +78,7 @@ Util.getIndexInArray = function(array, el) {
 
     // Event listeners
     filter.trigger.addEventListener('click', function() {toggleFilter(filter)});
+    filter.fulllist.addEventListener('click', function() {toggleFilter(filter)});
     filter.close.addEventListener('click', function() {toggleFilter(filter)});
     filter.continue.addEventListener('click', function() {toggleFilter(filter)});
     window.addEventListener('keyup', function() {onKeyUp(filter)});
@@ -136,13 +138,18 @@ Util.getIndexInArray = function(array, el) {
 
 function checkQuantity() {
 
-  var button = document.querySelector('.filters__toggle');
+  var toggleButton = document.querySelector('.filters__toggle');
+  var continueButton = document.querySelector('.filters__continue');
   var facet = document.querySelectorAll('.govuk-facets__button').length;
 
   if (facet >= 1) {
-    button.textContent = 'Show filter (' + facet + ')';
+    toggleButton.textContent = 'Show selections (' + facet + ')';
+    continueButton.textContent = 'Continue (' + facet + ' selected)';
+    toggleButton.classList.add('filters__toggle--is-visible');
   } else {
-    button.textContent = 'Show filter';
+    toggleButton.textContent = 'Show selections';
+    continueButton.textContent = 'Continue';
+    toggleButton.classList.remove('filters__toggle--is-visible');
   }
 
 };
@@ -213,7 +220,7 @@ Sector.prototype.addFacetHTML = function(checkbox, button) {
   button.classList.add('govuk-facets__button');
   button.setAttribute('type', 'button');
   button.setAttribute('aria-controls', checkbox.value);
-  button.setAttribute('aria-label', 'Remove filter ' + checkbox.nextElementSibling.innerText);
+  button.setAttribute('aria-label', 'Remove selection ' + checkbox.nextElementSibling.innerText);
   button.addEventListener('click', this.onButtonClick.bind(this, checkbox), false);
   button.innerHTML = '<span class="govuk-facets__button-text">' + checkbox.nextElementSibling.innerText + '</span><span class="govuk-facets__button-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M15,13.6L13.6,15L10,11.4L6.4,15L5,13.6L8.6,10L5,6.4L6.4,5L10,8.6L13.6,5L15,6.4L11.4,10L15,13.6z M10,0C4.5,0,0,4.5,0,10s4.5,10,10,10s10-4.5,10-10S15.5,0,10,0z"/></svg></span>'
 
